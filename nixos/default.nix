@@ -78,5 +78,8 @@
     };
   };
 
+  security.sudo.wheelNeedsPassword = false;
+  networking.firewall.enable = false;
+
   system.stateVersion = stateVersion;
 }
