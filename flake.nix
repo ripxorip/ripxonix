@@ -40,6 +40,12 @@
     in
     {
 
+      # The home-manager configurations (e.g): home-manager switch --flake ~/dev/ripxonix/#ripxorip@ripxowork
+      homeConfigurations = {
+        "ripxorip@ripxowork" = libx.mkHome { hostname = "ripxowork"; username = "ripxorip"; desktop = "gnome"; };
+      };
+
+      # The NixOS configurations (e.g): nixos-rebuild switch --flake ~/dev/ripxonix/#ripxowork
       nixosConfigurations = {
         ripxowork = libx.mkHost { hostname = "ripxowork"; username = "ripxorip"; desktop = "gnome"; };
 

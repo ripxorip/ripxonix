@@ -13,6 +13,26 @@
 
   time.timeZone = "Europe/Stockholm";
 
+  environment = {
+    defaultPackages = with pkgs; lib.mkForce [
+      home-manager
+      vim
+      rsync
+    ];
+    systemPackages = with pkgs; [
+      pciutils
+      psmisc
+      unzip
+      usbutils
+    ];
+    variables = {
+      EDITOR = "vim";
+      SYSTEMD_EDITOR = "vim";
+      VISUAL = "vim";
+    };
+  };
+
+
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Iosevka" ]; })
   ];
