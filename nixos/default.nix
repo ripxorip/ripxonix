@@ -24,6 +24,7 @@
       psmisc
       unzip
       usbutils
+      python3
     ];
     variables = {
       EDITOR = "vim";
