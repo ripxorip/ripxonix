@@ -51,5 +51,9 @@
           ];
         };
       };
+
+      # Custom packages and modifications, exported as overlays
+      overlays = import ./overlays { inherit inputs; };
+
     };
 }
