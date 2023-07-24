@@ -25,6 +25,7 @@
       unzip
       usbutils
       python3
+      zsh
     ];
     variables = {
       EDITOR = "vim";
