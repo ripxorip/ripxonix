@@ -17,6 +17,7 @@
       fd
       bat
       delta
+      btop
       tmux
     ];
 
