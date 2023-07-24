@@ -16,6 +16,7 @@
       exa
       fd
       bat
+      delta
       tmux
     ];
 
