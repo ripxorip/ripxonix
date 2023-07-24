@@ -13,6 +13,9 @@
       fzf
       neofetch
       ripgrep
+      exa
+      fd
+      bat
       tmux
     ];
 
