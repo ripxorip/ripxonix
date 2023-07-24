@@ -2,9 +2,12 @@
   imports = [
     ./tmux.nix
     ./zsh.nix
-    ./starship.nix
   ];
   home = {
+    file = {
+      "${config.xdg.configHome}/starship.toml".text = builtins.readFile ./starship.toml;
+    };
+
     packages = with pkgs; [
       starship
       fzf
