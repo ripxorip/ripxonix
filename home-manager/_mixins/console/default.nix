@@ -2,9 +2,12 @@
   imports = [
     ./tmux.nix
     ./zsh.nix
+    ./starship.nix
   ];
   home = {
     packages = with pkgs; [
+      starship
+      fzf
       neofetch
       ripgrep
       tmux
