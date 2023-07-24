@@ -18,8 +18,6 @@
         scrollback_lines = 10000;
         placement_strategy = "center";
 
-        visual_bell_duration = "0.1";
-
         repaint_delay = 1;
         input_delay = 1;
         sync_to_monitor = "no";
