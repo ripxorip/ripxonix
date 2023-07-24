@@ -33,7 +33,7 @@
       alias gs="git status"
       alias gc="git commit -m"
       alias b="docker_builder.py"
-      alias find='/usr/bin/fd'
+      # alias find='/usr/bin/fd'
       alias ff="find . -name"
       alias r2c="r2 -e asm.cpu=cortex"
       alias rgi="rg --no-ignore --iglob !tags "
@@ -100,9 +100,9 @@
           k "$file"
       }
 
-      fd() {
+      fdd() {
         local dir
-          dir=$(/usr/bin/find ''${1:-.} -path '*/\.*' -prune \
+          dir=$(find ''${1:-.} -path '*/\.*' -prune \
                           -o -type d -print 2> /dev/null | fzf +m) &&
           cd "$dir"
       }
@@ -112,12 +112,12 @@
         source "$(fzf-share)/completion.zsh"
       fi
 
-      zle -N fd
+      zle -N fdd
       zle -N fzvv
       zle -N fzkk
       bindkey "^T" fzvv
       bindkey "^A" fzkk
-      bindkey '^G' fd
+      bindkey '^G' fdd
       bindkey '^F' fzf-file-widget
       bindkey "^P" up-line-or-search
       bindkey "^N" down-line-or-search
