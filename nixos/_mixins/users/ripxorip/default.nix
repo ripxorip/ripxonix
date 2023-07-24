@@ -23,5 +23,6 @@ in
       firefox
       tree
     ];
+    shell = pkgs.zsh;
   };
 }

@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }: {
   imports = [
     ./tmux.nix
+    ./zsh.nix
   ];
   home = {
     packages = with pkgs; [

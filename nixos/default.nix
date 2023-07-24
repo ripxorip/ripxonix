@@ -95,6 +95,12 @@
     };
   };
 
+  programs = {
+    zsh = {
+      enable = true;
+    };
+  };
+
   security.sudo.wheelNeedsPassword = false;
   networking.firewall.enable = false;
 
