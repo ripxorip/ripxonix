@@ -1,6 +1,6 @@
 { lib, ... }:
 with lib.hm.gvariant;
 {
-  imports = [];
-  dconf.settings = {};
+  imports = [ ];
+  dconf.settings = { };
 }

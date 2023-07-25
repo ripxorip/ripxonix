@@ -1,8 +1,8 @@
-{ desktop, pkgs, lib, ... }: {
-  imports = [];
+{ pkgs, ... }: {
+  imports = [ ];
 
   environment.systemPackages = with pkgs; [
-    vim 
+    vim
     wget
     git
     vscode

@@ -3,7 +3,7 @@
     (./. + "/${desktop}.nix")
   ];
   home = {
-    packages = with pkgs; [];
+    packages = with pkgs; [ ];
   };
 
   programs = {
@@ -29,7 +29,7 @@
       keybindings = {
         "kitty_mod+equal" = "change_font_size all +1.0";
         "kitty_mod+minus" = "change_font_size all -1.0";
-        "ctrl+f11" =    "toggle_fullscreen";
+        "ctrl+f11" = "toggle_fullscreen";
       };
     };
   };

@@ -51,7 +51,7 @@
 
         # Old configuration to fallback on for now..
         ripxonix = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit system;};
+          specialArgs = { inherit system; };
           modules = [
             ./nixos/configuration.nix
           ];

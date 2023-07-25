@@ -1,7 +1,7 @@
 # Dell XPS 9510
-{ config, inputs, lib, ... }:
+{ config, lib, ... }:
 {
-  imports = [];
+  imports = [ ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
@@ -9,31 +9,34 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/2415ea65-b291-4dce-bbad-c67855a1b24c";
+    {
+      device = "/dev/disk/by-uuid/2415ea65-b291-4dce-bbad-c67855a1b24c";
       fsType = "btrfs";
-      options = [ "subvol=@nix_root" "noatime" "compress=lzo" "ssd" "space_cache=v2"];
+      options = [ "subvol=@nix_root" "noatime" "compress=lzo" "ssd" "space_cache=v2" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/7C3E-7058";
+    {
+      device = "/dev/disk/by-uuid/7C3E-7058";
       fsType = "vfat";
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/2415ea65-b291-4dce-bbad-c67855a1b24c";
+    {
+      device = "/dev/disk/by-uuid/2415ea65-b291-4dce-bbad-c67855a1b24c";
       fsType = "btrfs";
-      options = [ "subvol=@nix_home" "noatime" "compress=lzo" "ssd" "space_cache=v2"];
+      options = [ "subvol=@nix_home" "noatime" "compress=lzo" "ssd" "space_cache=v2" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/2415ea65-b291-4dce-bbad-c67855a1b24c";
+    {
+      device = "/dev/disk/by-uuid/2415ea65-b291-4dce-bbad-c67855a1b24c";
       fsType = "btrfs";
-      options = [ "subvol=@nix_nix" "noatime" "compress=lzo" "ssd" "space_cache=v2"];
+      options = [ "subvol=@nix_nix" "noatime" "compress=lzo" "ssd" "space_cache=v2" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/3a46a5ce-4a75-4d43-b83b-91950afd8784"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/3a46a5ce-4a75-4d43-b83b-91950afd8784"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -54,7 +57,7 @@
     ];
 
   # Tell Xorg to use the nvidia driver
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
 

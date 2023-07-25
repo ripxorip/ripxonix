@@ -1,9 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ lib, ... }:
 with lib.hm.gvariant;
 {
-  dconf.settings = {};
+  dconf.settings = { };
 
-  gtk = {};
+  gtk = { };
 
-  home.file = {};
+  home.file = { };
 }

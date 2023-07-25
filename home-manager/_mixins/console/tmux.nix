@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ pkgs, ... }: {
   programs.tmux = {
     enable = true;
 
@@ -174,6 +174,6 @@
       setw -g clock-mode-colour "''${thm_blue}"
       setw -g mode-style "fg=''${thm_pink} bg=''${thm_black4} bold"
 
-      '';
+    '';
   };
 }

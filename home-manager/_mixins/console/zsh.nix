@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ pkgs, ... }: {
   home = {
     packages = with pkgs; [
       zsh-fzf-tab
@@ -16,7 +16,7 @@
         "git"
         "history-substring-search"
         "last-working-dir"
-        ];
+      ];
     };
     initExtra = ''
       export PATH=~/tools:~/dev/workspace/tools:/home/ripxorip/dev/ptools:/home/ripxorip/dev/tools:~/.local/bin:$PATH:~/.cargo/bin

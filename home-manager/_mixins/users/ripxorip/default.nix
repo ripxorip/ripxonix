@@ -1,8 +1,8 @@
-{ lib, hostname, username, ... }: {
+{ lib, hostname, ... }: {
   imports = [ ]
     ++ lib.optional (builtins.pathExists (./. + "/hosts/${hostname}.nix")) ./hosts/${hostname}.nix;
 
-  home = {};
+  home = { };
 
-  systemd.user.tmpfiles.rules = [];
+  systemd.user.tmpfiles.rules = [ ];
 }
