@@ -37,6 +37,7 @@ in
       nvim-treesitter.withAllGrammars
       playground
       fzf-vim
+      vim-tmux-navigator
     ];
 
     extraPackages = with pkgs; [
