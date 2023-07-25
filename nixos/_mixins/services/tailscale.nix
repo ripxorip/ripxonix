@@ -1,3 +1,3 @@
-{ config, ... }: {
+_: {
   services.tailscale.enable = true;
 }

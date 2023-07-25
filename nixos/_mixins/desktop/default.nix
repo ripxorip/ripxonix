@@ -7,7 +7,8 @@
   services.xserver.libinput.enable = true;
 
   services.xserver.layout = "us";
-  services.xserver.xkbOptions = "eurosign:e,caps:escape";
+  services.xserver.xkbVariant = "colemak_dh";
+  services.xserver.xkbOptions = "eurosign:e,caps:ctrl_modifier";
 
   hardware.opengl = {
     enable = true;

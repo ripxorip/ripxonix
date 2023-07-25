@@ -1,4 +1,4 @@
-{ config, desktop, lib, pkgs, ... }: {
+{ desktop, lib, pkgs, ... }: {
   imports = [ ] ++ lib.optional (builtins.isString desktop) ./desktop.nix;
 
   #https://nixos.wiki/wiki/Podman
