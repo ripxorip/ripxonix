@@ -48,14 +48,6 @@
       # The NixOS configurations (e.g): nixos-rebuild switch --flake ~/dev/ripxonix/#ripxowork
       nixosConfigurations = {
         ripxowork = libx.mkHost { hostname = "ripxowork"; username = "ripxorip"; desktop = "gnome"; };
-
-        # Old configuration to fallback on for now..
-        ripxonix = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit system; };
-          modules = [
-            ./nixos/configuration.nix
-          ];
-        };
       };
 
       # nix fmt
