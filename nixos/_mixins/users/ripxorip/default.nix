@@ -18,6 +18,7 @@ in
     ++ ifExists [
       "docker"
       "podman"
+      "libvirtd"
     ];
     packages = with pkgs; [
       firefox
