@@ -2,6 +2,7 @@
   imports = [
     ./tmux.nix
     ./zsh.nix
+    ./git.nix
   ];
   home = {
     file = {
