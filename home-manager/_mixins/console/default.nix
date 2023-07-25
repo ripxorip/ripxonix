@@ -21,6 +21,8 @@
       delta
       btop
       tmux
+      gnupg
+      bitwarden-cli
     ];
 
     sessionVariables = {
