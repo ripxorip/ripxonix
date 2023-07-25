@@ -1,4 +1,16 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  bolt = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "bolt";
+    src = pkgs.fetchFromGitHub {
+      owner = "ripxorip";
+      repo = "bolt.nvim";
+      rev = "aecf421d9916c2480bd2bd1f86560634379cc671";
+      hash = "sha256-z7/3+/WMlJGQf8VzGgPTpjydFbQsDdCm6IftnZ0K6k4=";
+    };
+  };
+in
+{
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -6,6 +18,7 @@
     vimdiffAlias = true;
 
     plugins = with pkgs.vimPlugins; [
+      bolt
       nvim-lspconfig
       gitsigns-nvim
       catppuccin-nvim
@@ -15,7 +28,6 @@
       nvim-autopairs
       # FIXME These shall be created by me
       #vim-ripgrep
-      #ripxorip/bolt
       #ripxorip/aerojump
       #ripxorip/utils
       editorconfig-vim
