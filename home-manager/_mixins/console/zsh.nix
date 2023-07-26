@@ -112,9 +112,24 @@
         source "$(fzf-share)/completion.zsh"
       fi
 
+      gccam() {
+          if [ -z "$1" ]; then
+              echo "Please provide a commit message."
+          else
+              git add -A && git commit -m "$1" && git push
+          fi
+      }
+
+      gcam_bind() {
+          BUFFER="gccam \"\""
+          CURSOR=7
+      }
+
+      zle -N gcam_bind
       zle -N fdd
       zle -N fzvv
       zle -N fzkk
+      bindkey "^S" gcam_bind
       bindkey "^T" fzvv
       bindkey "^A" fzkk
       bindkey '^G' fdd

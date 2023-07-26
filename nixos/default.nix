@@ -26,6 +26,7 @@
       usbutils
       python3
       zsh
+      inputs.agenix.packages.${system}.default
     ];
     variables = {
       EDITOR = "vim";
