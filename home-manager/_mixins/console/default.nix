@@ -21,7 +21,7 @@
       delta
       btop
       tmux
-      gnupg
+      age
       bitwarden-cli
     ];
 
