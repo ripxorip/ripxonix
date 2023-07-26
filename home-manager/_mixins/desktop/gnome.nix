@@ -12,6 +12,10 @@ with lib.hm.gvariant;
       tap-to-click = true;
       two-finger-scrolling-enabled = true;
     };
+    "org/gnome/desktop/peripherals/keyboard" = {
+      delay = lib.hm.gvariant.mkUint32 257;
+      repeat-interval = lib.hm.gvariant.mkUint32 23;
+    };
   };
 
   gtk = { };

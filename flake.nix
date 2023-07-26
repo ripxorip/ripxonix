@@ -23,7 +23,6 @@
     { self
     , nix-formatter-pack
     , nixpkgs
-    , agenix
     , ...
     } @ inputs:
     let
