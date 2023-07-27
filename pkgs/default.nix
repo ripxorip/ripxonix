@@ -1,7 +1,7 @@
-# Custom packages, that can be defined similarly to ones from nixpkgs
-# Build them using 'nix build .#example' or (legacy) 'nix-build -A example'
+{ pkgs ? import <nixpkgs> { } }: rec {
 
-{ pkgs ? (import ../nixpkgs.nix) { } }: {
-  # example = pkgs.callPackage ./example { };
+  # Packages with an actual source
+
+  # Personal scripts
+  key_extractor = pkgs.callPackage ./key_extractor { };
 }
-
