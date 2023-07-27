@@ -5,4 +5,5 @@ Ripxorip's NixOS &amp; Home Manager Configurations
 - [ ] Create an ISO installer
   - Shall copy over the flake, secrets etc
   - Inspiration: https://www.reddit.com/r/NixOS/comments/y1xo2u/how_to_create_an_iso_with_my_config_files/ and wimpys installer scripts
+- [ ] The key bootstrapper shall also copy over SSH keys for git to enable the point below
 - [ ] Use a separate flake (private git repo) to store my secrets (see ryan4yin)
