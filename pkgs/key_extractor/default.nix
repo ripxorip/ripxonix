@@ -36,7 +36,7 @@ stdenv.mkDerivation {
               coreutils
             ]
           }"
-    '';
+  '';
 
   meta = {
     description = "A program that extracts my private key from bitwarden and make it available to agenix";

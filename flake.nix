@@ -21,56 +21,59 @@
   outputs =
     { self
     , nix-formatter-pack
+    , home-manager
     , nixpkgs
     , ...
     } @ inputs:
     let
       inherit (self) outputs;
+      lib = nixpkgs.lib // home-manager.lib;
+
       # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
       stateVersion = "23.05";
-      libx = import ./lib { inherit inputs outputs stateVersion; };
-      system = "x86_64-linux";
 
-      pkgs = import.nixpkgs {
-        inherit system;
-        conrfig = {
-          allowUnfree = true;
-        };
-      };
-
+      systems = [ "x86_64-linux" "aarch64-linux" ];
+      forEachSystem = f: lib.genAttrs systems (sys: f pkgsFor.${sys});
+      pkgsFor = nixpkgs.legacyPackages;
     in
     {
+      inherit lib;
       # nix fmt
-      formatter = libx.forAllSystems (system:
-        nix-formatter-pack.lib.mkFormatter {
-          pkgs = nixpkgs.legacyPackages.${system};
-          config.tools = {
-            alejandra.enable = false;
-            deadnix.enable = true;
-            nixpkgs-fmt.enable = true;
-            statix.enable = true;
-          };
-        }
-      );
-
-      # Custom packages; acessible via 'nix build', 'nix shell', etc
-      packages = libx.forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in import ./pkgs { inherit pkgs; }
-      );
-
+      formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
+      packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
       # Custom packages and modifications, exported as overlays
       overlays = import ./overlays { inherit inputs; };
 
       # The home-manager configurations (e.g): home-manager switch --flake ~/dev/ripxonix/#ripxorip@ripxowork
       homeConfigurations = {
-        "ripxorip@ripxowork" = libx.mkHome { hostname = "ripxowork"; username = "ripxorip"; desktop = "gnome"; };
+        "ripxorip@ripxowork" = lib.homeManagerConfiguration {
+          modules = [
+            ./home-manager
+          ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs stateVersion;
+            desktop = "gnome";
+            hostname = "ripxowork";
+            platform = "x86_64-linux";
+            username = "ripxorip";
+          };
+        };
       };
 
       # The NixOS configurations (e.g): nixos-rebuild switch --flake ~/dev/ripxonix/#ripxowork
       nixosConfigurations = {
-        ripxowork = libx.mkHost { hostname = "ripxowork"; username = "ripxorip"; desktop = "gnome"; };
+        ripxowork = lib.nixosSystem {
+          modules = [
+            ./nixos
+          ];
+          specialArgs = {
+            inherit inputs outputs stateVersion;
+            hostname = "ripxowork";
+            username = "ripxorip";
+            desktop = "gnome";
+          };
+        };
       };
-
     };
 }
