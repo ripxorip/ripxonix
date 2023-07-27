@@ -9,6 +9,15 @@ let
       hash = "sha256-z7/3+/WMlJGQf8VzGgPTpjydFbQsDdCm6IftnZ0K6k4=";
     };
   };
+  vim-ripgrep = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "vim-ripgrep-2021-11-30";
+    src = pkgs.fetchFromGitHub {
+      owner = "jremmen";
+      repo = "vim-ripgrep";
+      rev = "2bb2425387b449a0cd65a54ceb85e123d7a320b8";
+      sha256 = "sha256-OvQPTEiXOHI0uz0+6AVTxyJ/TUMg6kd3BYTAbnCI7W8=";
+    };
+  };
 in
 {
   programs.neovim = {
@@ -26,6 +35,7 @@ in
       vim-fugitive
       suda-vim
       nvim-autopairs
+      vim-ripgrep
       # FIXME These shall be created by me
       #vim-ripgrep
       #ripxorip/aerojump
