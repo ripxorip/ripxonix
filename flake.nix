@@ -17,12 +17,16 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+
   };
   outputs =
     { self
     , nix-formatter-pack
     , home-manager
     , nixpkgs
+    , agenix
     , ...
     } @ inputs:
     let
@@ -66,6 +70,7 @@
         ripxowork = lib.nixosSystem {
           modules = [
             ./nixos
+            agenix.nixosModules.age
           ];
           specialArgs = {
             inherit inputs outputs stateVersion;
