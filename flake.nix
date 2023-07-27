@@ -41,17 +41,6 @@
 
     in
     {
-
-      # The home-manager configurations (e.g): home-manager switch --flake ~/dev/ripxonix/#ripxorip@ripxowork
-      homeConfigurations = {
-        "ripxorip@ripxowork" = libx.mkHome { hostname = "ripxowork"; username = "ripxorip"; desktop = "gnome"; };
-      };
-
-      # The NixOS configurations (e.g): nixos-rebuild switch --flake ~/dev/ripxonix/#ripxowork
-      nixosConfigurations = {
-        ripxowork = libx.mkHost { hostname = "ripxowork"; username = "ripxorip"; desktop = "gnome"; };
-      };
-
       # nix fmt
       formatter = libx.forAllSystems (system:
         nix-formatter-pack.lib.mkFormatter {
@@ -65,14 +54,24 @@
         }
       );
 
-      # Custom packages and modifications, exported as overlays
-      overlays = import ./overlays { inherit inputs; };
-
       # Custom packages; acessible via 'nix build', 'nix shell', etc
       packages = libx.forAllSystems (system:
         let pkgs = nixpkgs.legacyPackages.${system};
         in import ./pkgs { inherit pkgs; }
       );
+
+      # Custom packages and modifications, exported as overlays
+      overlays = import ./overlays { inherit inputs; };
+
+      # The home-manager configurations (e.g): home-manager switch --flake ~/dev/ripxonix/#ripxorip@ripxowork
+      homeConfigurations = {
+        "ripxorip@ripxowork" = libx.mkHome { hostname = "ripxowork"; username = "ripxorip"; desktop = "gnome"; };
+      };
+
+      # The NixOS configurations (e.g): nixos-rebuild switch --flake ~/dev/ripxonix/#ripxowork
+      nixosConfigurations = {
+        ripxowork = libx.mkHost { hostname = "ripxowork"; username = "ripxorip"; desktop = "gnome"; };
+      };
 
     };
 }
