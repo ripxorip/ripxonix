@@ -1,19 +1,19 @@
 {
   config,
   pkgs,
-  agenix,
+  inputs,
+  username,
   ...
-}: {
-  imports = [
-    agenix.nixosModules.default
-  ];
-
+}:
+let
+    agenix = inputs.agenix;
+in
+{
   environment.systemPackages = [
     agenix.packages."${pkgs.system}".default
   ];
 
-  # if you changed this key, you need to regenerate all encrypt files from the decrypt contents!
   age.identityPaths = [
-    "/home/${username}/.ssh/juliet-age" # Linux
+    "/home/${username}/dev/keys/agenix"
   ];
 }

@@ -3,6 +3,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     ./${hostname}
     ./_mixins/users/${username}
+    ../secrets
   ] ++ lib.optional (builtins.isString desktop) ./_mixins/desktop;
 
   boot.loader.systemd-boot.enable = true;
@@ -26,7 +27,6 @@
       usbutils
       python3
       zsh
-      inputs.agenix.packages.${system}.default
     ];
     variables = {
       EDITOR = "vim";
