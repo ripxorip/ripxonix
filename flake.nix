@@ -47,6 +47,7 @@
       packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
       # Custom packages and modifications, exported as overlays
       overlays = import ./overlays { inherit inputs; };
+      devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
 
       # The home-manager configurations (e.g): home-manager switch --flake ~/dev/ripxonix/#ripxorip@ripxowork
       homeConfigurations = {
