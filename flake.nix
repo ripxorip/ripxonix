@@ -17,14 +17,11 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
     { self
     , nix-formatter-pack
     , nixpkgs
-    , agenix
     , ...
     } @ inputs:
     let
