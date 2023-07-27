@@ -9,7 +9,6 @@
         nix
         home-manager
         git
-        key_extractor
     ];
   };
 }
