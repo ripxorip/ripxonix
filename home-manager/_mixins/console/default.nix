@@ -22,7 +22,7 @@
       btop
       tmux
       age
-      bitwarden-cli
+      key_extractor
     ];
 
     sessionVariables = {
