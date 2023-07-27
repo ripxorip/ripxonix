@@ -5,6 +5,7 @@ import json
 user_home = os.environ['HOME']
 os.system(f'mkdir -p {user_home}/dev/keys')
 
+os.system('bw login')
 raw_out = os.popen("bw get item agenix_private_key").read()
 json_out = json.loads(raw_out)
 key_data = json_out['notes']
