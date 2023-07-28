@@ -1,5 +1,6 @@
 let
   ripxorip = builtins.readFile ./agenix.pub;
-in {
+in
+{
   "secret1.age".publicKeys = [ ripxorip ];
 }

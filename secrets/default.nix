@@ -1,12 +1,11 @@
-{
-  config,
-  pkgs,
-  inputs,
-  username,
-  ...
+{ config
+, pkgs
+, inputs
+, username
+, ...
 }:
 let
-    agenix = inputs.agenix;
+  agenix = inputs.agenix;
 in
 {
   environment.systemPackages = [

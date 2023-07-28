@@ -67,54 +67,57 @@
       };
 
       # The NixOS configurations
-      nixosConfigurations = let 
-        iso_params = {
-          isoImage.squashfsCompression = "gzip -Xcompression-level 1";
-        };
-      in {
-        #sudo nixos-rebuild switch --flake ~/dev/ripxonix/#ripxowork
-        ripxowork = lib.nixosSystem {
-          modules = [
-            ./nixos
-            agenix.nixosModules.age
-          ];
-          specialArgs = {
-            inherit inputs outputs stateVersion;
-            hostname = "ripxowork";
-            username = "ripxorip";
-            desktop = "gnome";
+      nixosConfigurations =
+        let
+          iso_params = {
+            services.xserver.displayManager.autoLogin.user = lib.mkForce "ripxorip";
+            isoImage.squashfsCompression = "gzip -Xcompression-level 1";
+          };
+        in
+        {
+          #sudo nixos-rebuild switch --flake ~/dev/ripxonix/#ripxowork
+          ripxowork = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion;
+              hostname = "ripxowork";
+              username = "ripxorip";
+              desktop = "gnome";
+            };
+          };
+          # Build using: nix build .#nixosConfigurations.iso-desktop.config.system.build.isoImage 
+          # Handy debug tip: nix eval .#nixosConfigurations.iso-desktop.config.isoImage.squashfsCompression
+          iso-desktop = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+              (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix")
+              iso_params
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.users.ripxorip = {
+                  imports = [
+                    ./home-manager
+                  ];
+                };
+                home-manager.extraSpecialArgs = {
+                  inherit inputs outputs stateVersion;
+                  desktop = "gnome";
+                  hostname = "iso-desktop";
+                  username = "ripxorip";
+                };
+              }
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion;
+              hostname = "iso-desktop";
+              username = "ripxorip";
+              desktop = "gnome";
+            };
           };
         };
-        # Build using: nix build .#nixosConfigurations.iso-desktop.config.system.build.isoImage 
-        # Handy debug tip: nix eval .#nixosConfigurations.iso-desktop.config.isoImage.squashfsCompression
-        iso-desktop = lib.nixosSystem {
-          modules = [
-            ./nixos
-            agenix.nixosModules.age
-            iso_params
-            (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix")
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.users.ripxorip = {
-                imports = [
-                  ./home-manager
-                ];
-              };
-              home-manager.extraSpecialArgs = {
-                inherit inputs outputs stateVersion;
-                desktop = "gnome";
-                hostname = "iso-desktop";
-                username = "ripxorip";
-              };
-            }
-          ];
-          specialArgs = {
-            inherit inputs outputs stateVersion;
-            hostname = "iso-desktop";
-            username = "ripxorip";
-            desktop = "gnome";
-          };
-        };
-      };
     };
 }
