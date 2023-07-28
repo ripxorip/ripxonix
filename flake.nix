@@ -67,7 +67,11 @@
       };
 
       # The NixOS configurations
-      nixosConfigurations = {
+      nixosConfigurations = let 
+        iso_params = {
+          isoImage.squashfsCompression = "gzip -Xcompression-level 1";
+        };
+      in {
         #sudo nixos-rebuild switch --flake ~/dev/ripxonix/#ripxowork
         ripxowork = lib.nixosSystem {
           modules = [
@@ -81,15 +85,18 @@
             desktop = "gnome";
           };
         };
+        # Build using: nix build .#nixosConfigurations.iso-desktop.config.system.build.isoImage 
+        # Handy debug tip: nix eval .#nixosConfigurations.iso-desktop.config.isoImage.squashfsCompression
         iso-desktop = lib.nixosSystem {
           modules = [
             ./nixos
             agenix.nixosModules.age
+            iso_params
             (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares.nix")
           ];
           specialArgs = {
             inherit inputs outputs stateVersion;
-            hostname = "ripxonix";
+            hostname = "iso-desktop";
             username = "ripxorip";
             desktop = "gnome";
           };

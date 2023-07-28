@@ -12,6 +12,7 @@ in
 
   users.users.ripxorip = {
     isNormalUser = true;
+    initialPassword = "ripxonix";
     extraGroups = [
       "wheel"
     ] # Enable ‘sudo’ for the user.
