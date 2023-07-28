@@ -92,7 +92,7 @@
             ./nixos
             agenix.nixosModules.age
             iso_params
-            (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares.nix")
+            (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix")
             home-manager.nixosModules.home-manager
             {
               home-manager.users.ripxorip = {
