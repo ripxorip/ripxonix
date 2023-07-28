@@ -13,7 +13,8 @@ in
     agenix.packages."${pkgs.system}".default
   ];
 
-  age.secrets.secret1.file = ./secret1.age;
+  # Secrets will be enabled again once the iso has been sorted out
+  # age.secrets.secret1.file = ./secret1.age;
 
   age.identityPaths = [
     "/home/${username}/dev/keys/agenix"

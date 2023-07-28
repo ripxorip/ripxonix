@@ -66,8 +66,9 @@
         };
       };
 
-      # The NixOS configurations (e.g): nixos-rebuild switch --flake ~/dev/ripxonix/#ripxowork
+      # The NixOS configurations
       nixosConfigurations = {
+        #sudo nixos-rebuild switch --flake ~/dev/ripxonix/#ripxowork
         ripxowork = lib.nixosSystem {
           modules = [
             ./nixos
@@ -76,6 +77,19 @@
           specialArgs = {
             inherit inputs outputs stateVersion;
             hostname = "ripxowork";
+            username = "ripxorip";
+            desktop = "gnome";
+          };
+        };
+        iso-desktop = lib.nixosSystem {
+          modules = [
+            ./nixos
+            agenix.nixosModules.age
+            (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares.nix")
+          ];
+          specialArgs = {
+            inherit inputs outputs stateVersion;
+            hostname = "ripxonix";
             username = "ripxorip";
             desktop = "gnome";
           };
