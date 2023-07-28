@@ -3,7 +3,9 @@
     (./. + "/${desktop}.nix")
   ];
   home = {
-    packages = with pkgs; [ ];
+    packages = with pkgs; [
+      element-desktop
+    ];
   };
 
   programs = {
