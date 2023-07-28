@@ -93,6 +93,20 @@
             agenix.nixosModules.age
             iso_params
             (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares.nix")
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.users.ripxorip = {
+                imports = [
+                  ./home-manager
+                ];
+              };
+              home-manager.extraSpecialArgs = {
+                inherit inputs outputs stateVersion;
+                desktop = "gnome";
+                hostname = "iso-desktop";
+                username = "ripxorip";
+              };
+            }
           ];
           specialArgs = {
             inherit inputs outputs stateVersion;
