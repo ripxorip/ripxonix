@@ -62,6 +62,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 
   sudo nixos-install --no-root-password --flake ".#$TARGET_HOST"
 
+  sudo chown -R ${TARGET_USER}:users /mnt/home/$TARGET_USER
   # Rsync nix-config to the target install and set the remote origin to SSH.
   rsync -a --delete "$HOME/dev/" "/mnt/home/$TARGET_USER/dev/"
   pushd "/mnt/home/$TARGET_USER/dev/ripxonix"
