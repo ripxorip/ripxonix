@@ -11,7 +11,6 @@
     };
 
     packages = with pkgs; [
-      gnumake
       starship
       fzf
       neofetch

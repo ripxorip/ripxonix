@@ -22,6 +22,7 @@
       rsync
     ];
     systemPackages = with pkgs; [
+      gnumake
       pciutils
       psmisc
       unzip
