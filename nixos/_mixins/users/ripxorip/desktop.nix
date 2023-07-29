@@ -5,6 +5,6 @@
     vim
     wget
     git
-    vscode
+    unstable.vscode-fhs
   ];
 }
