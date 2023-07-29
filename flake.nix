@@ -88,6 +88,18 @@
               desktop = "gnome";
             };
           };
+          vm = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion;
+              hostname = "vm";
+              username = "ripxorip";
+              desktop = "gnome";
+            };
+          };
           # Build using: nix build .#nixosConfigurations.iso-desktop.config.system.build.isoImage 
           # Handy debug tip: nix eval .#nixosConfigurations.iso-desktop.config.isoImage.squashfsCompression
           iso-desktop = lib.nixosSystem {

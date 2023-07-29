@@ -14,12 +14,12 @@
     initrd.availableKernelModules = [ "xhci_pci" "ohci_pci" "ehci_pci" "virtio_pci" "ahci" "usbhid" "sr_mod" "virtio_blk" ];
     kernelPackages = pkgs.linuxPackages_latest;
 
-  loader = {
-        efi.canTouchEfiVariables = true;
-        systemd-boot.configurationLimit = 10;
-        systemd-boot.enable = true;
-        systemd-boot.memtest86.enable = true;
-        timeout = 10;
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot.configurationLimit = 10;
+      systemd-boot.enable = true;
+      systemd-boot.memtest86.enable = true;
+      timeout = 10;
     };
 
   };
