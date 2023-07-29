@@ -1,5 +1,6 @@
 { config, desktop, hostname, inputs, lib, modulesPath, outputs, pkgs, stateVersion, username, ... }: {
   imports = [
+    inputs.disko.nixosModules.disko
     (modulesPath + "/installer/scan/not-detected.nix")
     ./${hostname}
     ./_mixins/users/${username}
