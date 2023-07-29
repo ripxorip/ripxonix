@@ -4,4 +4,5 @@
 
   # Personal scripts
   key_extractor = pkgs.callPackage ./key_extractor { };
+  ripxonix-installer = pkgs.callPackage ./ripxonix-installer { };
 }
