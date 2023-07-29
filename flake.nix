@@ -64,6 +64,19 @@
             username = "ripxorip";
           };
         };
+        "ripxorip@vm" = lib.homeManagerConfiguration {
+          modules = [
+            ./home-manager
+          ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs stateVersion;
+            desktop = "gnome";
+            hostname = "vm";
+            platform = "x86_64-linux";
+            username = "ripxorip";
+          };
+        };
       };
 
       # The NixOS configurations
