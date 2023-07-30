@@ -87,6 +87,7 @@
             hostname = "ripxonode";
             platform = "x86_64-linux";
             username = "ripxorip";
+            desktop = null;
           };
         };
       };
@@ -134,6 +135,7 @@
               inherit inputs outputs stateVersion;
               hostname = "ripxonode";
               username = "ripxorip";
+              desktop = null;
             };
           };
           # Build using: nix build .#nixosConfigurations.iso-desktop.config.system.build.isoImage 
