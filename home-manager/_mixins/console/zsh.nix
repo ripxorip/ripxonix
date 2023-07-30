@@ -1,4 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, desktop, ... }:
+let
+  get_xterm_export = _desktop:
+    if desktop == null then ''export TERM=xterm-256color'' else '''';
+in
+{
   home = {
     packages = with pkgs; [
       zsh-fzf-tab
@@ -206,6 +211,8 @@
       source ~/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh
       source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
       source ~/.nix-profile/share/zsh-z/zsh-z.plugin.zsh
+
+      ${get_xterm_export(desktop)}
       eval "$(starship init zsh)"
     '';
   };
