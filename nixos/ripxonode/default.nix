@@ -24,6 +24,10 @@
   boot.loader.grub.device = "nodev";
   boot.loader.timeout = 10;
 
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
+  networking.hostId = "ef6b9cc7";
+
   fileSystems."/" =
     {
       device = "/dev/sda";
