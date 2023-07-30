@@ -6,7 +6,7 @@ in
   # Only include desktop components if one is supplied.
   imports = [ ] ++ lib.optional (builtins.isString desktop) ./desktop.nix;
 
-  environment.systemPackages = with pgks; [
+  environment.systemPackages = with pkgs; [
     vim
     wget
     git
