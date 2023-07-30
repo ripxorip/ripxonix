@@ -2,7 +2,7 @@
 {
   imports = [ ];
 
-  systemd.timers."hello-world" = {
+  systemd.user.timers."hello-world" = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnBootSec = "5m";
@@ -11,7 +11,7 @@
     };
   };
 
-  systemd.services."hello-world" = {
+  systemd.user.services."hello-world" = {
     script = ''
       set -eu
       ${pkgs.coreutils}/bin/echo "Hello World"
