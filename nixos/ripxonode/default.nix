@@ -4,6 +4,7 @@
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
     ../_mixins/services/tailscale.nix
+    ../_mixins/services/ripxobot.nix
     ../_mixins/virt
   ];
 
