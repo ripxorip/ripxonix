@@ -11,6 +11,7 @@
     };
 
     packages = with pkgs; [
+      tldr
       starship
       fzf
       neofetch
