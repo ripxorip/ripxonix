@@ -2,46 +2,46 @@
 { config, lib, modulesPath, ... }:
 {
   imports = [
-    [
-      (modulesPath + "/profiles/qemu-guest.nix")
-      ../_mixins/services/tailscale.nix
-      ../_mixins/virt
-    ];
-    boot.initrd.availableKernelModules = [ "virtio_pci" "virtio_scsi" "ahci" "sd_mod" ];
-    boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ ];
-    boot.extraModulePackages = [ ];
+    (modulesPath + "/profiles/qemu-guest.nix")
+    ../_mixins/services/tailscale.nix
+    ../_mixins/virt
+  ];
 
-    boot.kernelParams = [ "console=ttyS0,19200n8" ];
-    boot.loader.grub.extraConfig = ''
+  boot.initrd.availableKernelModules = [ "virtio_pci" "virtio_scsi" "ahci" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ ];
+  boot.extraModulePackages = [ ];
+
+  boot.kernelParams = [ "console=ttyS0,19200n8" ];
+  boot.loader.grub.extraConfig = ''
     serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1;
     terminal_input serial;
     terminal_output serial
   '';
 
-    boot.loader.grub.forceInstall = true;
+  boot.loader.grub.forceInstall = true;
 
-    boot.loader.grub.device = "nodev";
-    boot.loader.timeout = 10;
+  boot.loader.grub.device = "nodev";
+  boot.loader.timeout = 10;
 
-    fileSystems."/" =
+  fileSystems."/" =
     {
       device = "/dev/sda";
       fsType = "ext4";
     };
 
-    swapDevices =
+  swapDevices =
     [{ device = "/dev/sdb"; }];
 
-    # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-    # (the default) this is the recommended approach. When using systemd-networkd it's
-    # still possible to use this option, but it's recommended to use it in conjunction
-    # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-    networking.useDHCP = lib.mkDefault
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault
     true;
-    # networking.interfaces.enp0s5.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp0s5.useDHCP = lib.mkDefault true;
 
-    nixpkgs.hostPlatform = lib.mkDefault
+  nixpkgs.hostPlatform = lib.mkDefault
     "x86_64-linux";
 
 }
