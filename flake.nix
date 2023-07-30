@@ -77,6 +77,18 @@
             username = "ripxorip";
           };
         };
+        "ripxorip@rixonode" = lib.homeManagerConfiguration {
+          modules = [
+            ./home-manager
+          ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs stateVersion;
+            hostname = "ripxonode";
+            platform = "x86_64-linux";
+            username = "ripxorip";
+          };
+        };
       };
 
       # The NixOS configurations
@@ -111,6 +123,17 @@
               hostname = "vm";
               username = "ripxorip";
               desktop = "gnome";
+            };
+          };
+          ripxonode = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion;
+              hostname = "ripxonode";
+              username = "ripxorip";
             };
           };
           # Build using: nix build .#nixosConfigurations.iso-desktop.config.system.build.isoImage 
