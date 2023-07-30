@@ -77,7 +77,7 @@
             username = "ripxorip";
           };
         };
-        "ripxorip@rixonode" = lib.homeManagerConfiguration {
+        "ripxorip@ripxonode" = lib.homeManagerConfiguration {
           modules = [
             ./home-manager
           ];
