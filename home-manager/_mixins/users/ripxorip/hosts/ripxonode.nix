@@ -20,4 +20,5 @@
       Type = "oneshot";
       User = "root";
     };
-  }
+  };
+}
