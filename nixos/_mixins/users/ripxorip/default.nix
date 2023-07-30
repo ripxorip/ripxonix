@@ -6,8 +6,10 @@ in
   # Only include desktop components if one is supplied.
   imports = [ ] ++ lib.optional (builtins.isString desktop) ./desktop.nix;
 
-  environment.systemPackages = [
-    # pkgs.yadm # Terminal dot file manager
+  environment.systemPackages = with pgks; [
+    vim
+    wget
+    git
   ];
 
   users.users.ripxorip = {
