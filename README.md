@@ -1,7 +1,7 @@
 # Ripxonix
 Ripxorip's NixOS &amp; Home Manager Configurations
 
-## Usage 🏗
+## Usage ⚒️
 ``````make
 # Rebuild the OS
 make os
