@@ -25,6 +25,8 @@
       age
       bitwarden-cli
       key_extractor
+      tokei
+      du-dust
     ];
 
     sessionVariables = {
