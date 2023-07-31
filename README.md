@@ -5,8 +5,9 @@ Ripxorip's NixOS &amp; Home Manager Configurations
 ``````make
 
 #################################################################################
-#              88                                               88
-#              ""                                               ""
+#
+#               88                                               88
+#               ""                                               ""
 #
 #    8b,dPPYba, 88 8b,dPPYba, 8b,     ,d8 ,adPPYba,  8b,dPPYba,  88 8b,     ,d8
 #    88P'   "Y8 88 88P'    "8a `Y8, ,8P' a8"     "8a 88P'   `"8a 88  `Y8, ,8P'
@@ -15,6 +16,7 @@ Ripxorip's NixOS &amp; Home Manager Configurations
 #    88         88 88`YbbdP"' 8P'     `Y8 `"YbbdP"'  88       88 88 8P'     `Y8
 #                  88
 #                  88
+#
 #################################################################################
 
 # Rebuild the OS
