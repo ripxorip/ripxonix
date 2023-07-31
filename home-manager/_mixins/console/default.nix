@@ -25,7 +25,6 @@
       age
       bitwarden-cli
       key_extractor
-      matrix-sh
     ];
 
     sessionVariables = {
