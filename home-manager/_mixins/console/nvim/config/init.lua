@@ -22,6 +22,8 @@ require('lang')
 -- Another option is to groups configuration in one folder
 require('config')
 
+require('gitsigns').setup()
+
 -- OR you can invoke them individually here
 -- require('config.colorscheme')  -- color scheme
 -- require('config.completion')   -- completion
