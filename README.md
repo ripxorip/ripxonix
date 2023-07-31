@@ -3,6 +3,16 @@ Ripxorip's NixOS &amp; Home Manager Configurations
 
 ## Usage ⚒️
 ``````make
+#############################################################
+#              "                                  "
+#      m mm  mmm    mmmm   m   m   mmm   m mm   mmm    m   m
+#      #"  "   #    #" "#   #m#   #" "#  #"  #    #     #m#
+#      #       #    #   #   m#m   #   #  #   #    #     m#m
+#      #     mm#mm  ##m#"  m" "m  "#m#"  #   #  mm#mm  m" "m
+#                  #
+#                  "
+#############################################################
+
 # Rebuild the OS
 make os
 # Initial build of the home environment
