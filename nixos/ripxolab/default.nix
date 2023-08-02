@@ -14,6 +14,11 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
+  networking.hostId = "c0c6d51d";
+  boot.zfs.extraPools = [ "zfsdata" "nvme_zfsdata" ];
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
