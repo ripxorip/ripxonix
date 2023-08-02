@@ -28,6 +28,7 @@
       usbutils
       python3
       zsh
+      hdparm
     ];
     variables = {
       EDITOR = "vim";
