@@ -7,6 +7,13 @@
     ../_mixins/virt
   ];
 
+  # Auto login
+  services.xserver.displayManager.autoLogin.user = "ripxorip";
+  services.xserver.displayManager.autoLogin.enable = true;
+
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
