@@ -3,7 +3,8 @@
   imports = [ ];
   dconf.settings = { };
 
+  home = {
     packages = with pkgs; [
-      x11vnc
     ];
+  };
 }
