@@ -29,7 +29,6 @@
       du-dust
       wireguard-tools
       jq
-      sanoid
     ];
 
     sessionVariables = {
