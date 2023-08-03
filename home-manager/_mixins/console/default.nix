@@ -28,6 +28,7 @@
       tokei
       du-dust
       wireguard-tools
+      jq
       sanoid
     ];
 
