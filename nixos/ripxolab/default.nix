@@ -30,6 +30,8 @@
     ACTION=="add|change", KERNEL=="sd[a-z]", ATTRS{queue/rotational}=="1", RUN+="${pkgs.hdparm}/bin/hdparm -S 120 /dev/%k"
   '';
 
+  # In order for VSCode remote to work
+  programs.nix-ld.enable = true;
 
   hardware.opengl = {
     enable = true;
