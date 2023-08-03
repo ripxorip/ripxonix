@@ -27,6 +27,7 @@
       key_extractor
       tokei
       du-dust
+      wireguard-tools
     ];
 
     sessionVariables = {
