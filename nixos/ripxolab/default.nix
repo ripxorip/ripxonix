@@ -6,6 +6,8 @@
     ../_mixins/services/tailscale.nix
     ../_mixins/services/caddy.nix
     ../_mixins/services/syncthing.nix
+    ../_mixins/services/jellyfin.nix
+    ../_mixins/services/flatpak.nix
     ../_mixins/virt
   ];
 
@@ -26,6 +28,15 @@
   services.udev.extraRules = ''
     ACTION=="add|change", KERNEL=="sd[a-z]", ATTRS{queue/rotational}=="1", RUN+="${pkgs.hdparm}/bin/hdparm -S 120 /dev/%k"
   '';
+
+
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+  };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

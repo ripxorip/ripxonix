@@ -24,6 +24,7 @@ in
     ++ ifExists [
       "docker"
       "podman"
+      "jellyfin"
       "libvirtd"
     ];
     packages = with pkgs; [
