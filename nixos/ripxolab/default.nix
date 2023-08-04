@@ -33,6 +33,10 @@
   # In order for VSCode remote to work
   programs.nix-ld.enable = true;
 
+  # FIXME Workaround until docker is updated
+  # Will need to be removed in the near future
+  virtualisation.docker.package = pkgs.docker.override { buildGoPackage = pkgs.buildGo118Package; };
+
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
