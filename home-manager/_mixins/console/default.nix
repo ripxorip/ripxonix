@@ -30,6 +30,7 @@
       wireguard-tools
       jq
       dig
+      matrix-sh
     ];
 
     sessionVariables = {

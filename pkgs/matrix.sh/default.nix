@@ -6,6 +6,7 @@
 , coreutils
 , curl
 , hostname
+, bash
 , jq
 }:
 
@@ -33,6 +34,7 @@ stdenv.mkDerivation {
     wrapProgram $out/bin/matrix.sh --set PATH \
       "${makeBinPath [
         hostname
+        bash
         curl
         jq
         coreutils
