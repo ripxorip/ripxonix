@@ -3,6 +3,7 @@
 {
   imports = [
     ../_mixins/services/tailscale.nix
+    ../_mixins/services/syncthing.nix
     ../_mixins/virt
   ];
 
