@@ -33,18 +33,18 @@
   # In order for VSCode remote to work
   programs.nix-ld.enable = true;
 
-systemd.timers.ripxobot-housekeeper = {
-  wantedBy = [ "timers.target" ];
+  systemd.timers.ripxobot-housekeeper = {
+    wantedBy = [ "timers.target" ];
     timerConfig = {
       OnCalendar = "*-*-* 03:00:00";
-      Persistant=true;
+      Persistant = true;
       Unit = "ripxobot-housekeeper.service";
     };
   };
 
   # This needs my full environment, hmm, user service instead? Needs som more investigation!
   systemd.services.ripxobot-housekeeper = {
-    path = ["/run/wrappers/" pkgs.coreutils pkgs.gawk pkgs.syncoid pkgs.tailscale pkgs.matrix-sh];
+    path = [ "/run/wrappers/" pkgs.coreutils pkgs.gawk pkgs.syncoid pkgs.tailscale pkgs.matrix-sh ];
     unitConfig = {
       Description = "The ripxobot housekeeper";
       Requires = [ "local-fs.targetz" ];
