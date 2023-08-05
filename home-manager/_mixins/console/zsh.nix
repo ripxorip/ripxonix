@@ -63,6 +63,9 @@ in
       alias dbgs="rsync -razhmv --delete ./ ~/shared/debug --exclude='.git/' --exclude='node_modules/' --exclude='.venv/'"
       alias rr="rax2 -r"
 
+      alias wgu="sudo systemctl stop tailscaled.service && wg-quick up ~/wireguard/SE-Integrity.conf"
+      alias wgd="wg-quick down ~/wireguard/SE-Integrity.conf && sudo systemctl start tailscaled.service"
+
       alias markdown_preview="grip -b"
 
       bindkey -v
