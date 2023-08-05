@@ -27,6 +27,7 @@
       key_extractor
       tokei
       du-dust
+      radare2
       wireguard-tools
       jq
       dig
