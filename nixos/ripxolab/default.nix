@@ -9,6 +9,7 @@
     ../_mixins/services/jellyfin.nix
     ../_mixins/services/flatpak.nix
     ../_mixins/services/sanoid.nix
+    ../_mixins/services/ripxobot.nix
     ../_mixins/virt
   ];
 
@@ -36,6 +37,9 @@
   # FIXME Workaround until docker is updated
   # Will need to be removed in the near future
   virtualisation.docker.package = pkgs.docker.override { buildGoPackage = pkgs.buildGo118Package; };
+
+  # Override the time of day to run the housekeeper
+  systemd.timers.ripxobot-housekeeper.timerConfig.OnCalendar = lib.mkForce "*-*-* 01:00:00";
 
   hardware.opengl = {
     enable = true;

@@ -1,22 +1,28 @@
 { pkgs, ... }:
 {
-  systemd.timers."hello-world" = {
+  systemd.timers.ripxobot-housekeeper = {
+    enable = false;
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnBootSec = "5m";
-      OnUnitActiveSec = "5m";
-      Unit = "hello-world.service";
+      OnCalendar = "*-*-* 03:00:00";
+      Persistant = true;
+      Unit = "ripxobot-housekeeper.service";
     };
   };
 
-  systemd.services."hello-world" = {
-    script = ''
-      set -eu
-      ${pkgs.coreutils}/bin/echo "Hello World"
-    '';
+  # This needs my full environment, hmm, user service instead? Needs som more investigation!
+  systemd.services.ripxobot-housekeeper = {
+    path = [ "/run/wrappers/" pkgs.coreutils pkgs.gawk pkgs.syncoid pkgs.tailscale pkgs.matrix-sh ];
+    unitConfig = {
+      Description = "The ripxobot housekeeper";
+      Requires = [ "local-fs.targetz" ];
+      After = [ "local-fs.target" ];
+    };
     serviceConfig = {
+      User = "ripxorip";
       Type = "oneshot";
-      User = "root";
+      ExecStart = "${pkgs.python3}/bin/python /home/ripxorip/dev/ripxobot/ripxobot.py";
+      WorkingDirectory = "/home/ripxorip/dev/ripxobot/";
     };
   };
 }
