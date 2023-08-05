@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   systemd.timers.ripxobot-housekeeper = {
-    enable = false;
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnCalendar = "*-*-* 03:00:00";
