@@ -20,6 +20,7 @@
     vlc
     kitty
     logseq
+    spotify
   ];
 
 }
