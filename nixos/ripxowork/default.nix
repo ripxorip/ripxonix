@@ -1,5 +1,5 @@
 # Dell XPS 9510
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 {
   imports = [
     ../_mixins/services/tailscale.nix
@@ -67,6 +67,11 @@
 
   # Tell Xorg to use the nvidia driver
   services.xserver.videoDrivers = [ "nvidia" ];
+
+    environment.systemPackages = with pkgs; [
+        kicad
+      ];
+
 
   hardware.nvidia = {
 
