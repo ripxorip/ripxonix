@@ -66,7 +66,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   # Rsync nix-config to the target install and set the remote origin to SSH.
   rsync -a --delete "$HOME/dev/" "/mnt/home/$TARGET_USER/dev/"
   pushd "/mnt/home/$TARGET_USER/dev/ripxonix"
-  git remote set-url origin git@github.com/ripxorip/ripxonix.git
+  git remote set-url origin git@github.com:ripxorip/ripxonix.git
   popd
 
   # If there is a keyfile for a data disk, put copy it to the root partition and
