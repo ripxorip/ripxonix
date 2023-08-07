@@ -20,6 +20,7 @@ in
     ];
     extraGroups = [
       "wheel"
+      "dialout"
     ] # Enable ‘sudo’ for the user.
     ++ ifExists [
       "docker"

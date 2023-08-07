@@ -17,6 +17,12 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
+  services.envfs.enable = true;
+  # FIXME Workaround until docker is updated
+  # Will need to be removed in the near future
+  virtualisation.docker.package = pkgs.docker.override { buildGoPackage = pkgs.buildGo118Package; };
+
   fileSystems."/" =
     {
       device = "/dev/disk/by-uuid/2415ea65-b291-4dce-bbad-c67855a1b24c";
@@ -70,6 +76,7 @@
 
     environment.systemPackages = with pkgs; [
         kicad
+        (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server]))
       ];
 
 

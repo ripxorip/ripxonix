@@ -105,7 +105,7 @@ nvim_lsp.ccls.setup{
 }
 
 require'lspconfig'.tsserver.setup{on_attach=on_attach}
-require'lspconfig'.pylsp.setup{on_attach=on_attach, cmd={"pyls"}}
+require'lspconfig'.pylsp.setup{on_attach=on_attach, cmd={"pylsp"}}
 require'lspconfig'.rust_analyzer.setup{on_attach=on_attach}
 
 -- require'lspinstall'.setup()
