@@ -19,9 +19,6 @@
 
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
   services.envfs.enable = true;
-  # FIXME Workaround until docker is updated
-  # Will need to be removed in the near future
-  virtualisation.docker.package = pkgs.docker.override { buildGoPackage = pkgs.buildGo118Package; };
 
   fileSystems."/" =
     {
