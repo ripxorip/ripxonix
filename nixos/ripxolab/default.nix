@@ -70,6 +70,19 @@
   swapDevices =
     [{ device = "/dev/disk/by-uuid/7cd59f45-ac9f-4c8f-87df-fbaa809bc1d3"; }];
 
+  # Working nfs example below
+  # Just need to make sure that the zfs dataset exists
+  # Mount using e.g : sudo mount -t nfs -o vers=4 10.0.0.175:/export /mnt
+  #  fileSystems."/export" = {
+  #    device = "/mnt/nvme_zfsdata/nfs_share";
+  #    options = [ "bind" ];
+  #  };
+
+  #  services.nfs.server.enable = true;
+  #  services.nfs.server.exports = ''
+  #    /export  ripxoarch.local(rw,nohide,insecure,no_subtree_check) ripxoarch.local(rw,nohide,insecure,no_subtree_check)
+  #  '';
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction

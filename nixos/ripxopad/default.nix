@@ -32,7 +32,7 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-    environment.systemPackages = with pkgs; [
-        (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server]))
-      ];
+  environment.systemPackages = with pkgs; [
+    (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
+  ];
 }

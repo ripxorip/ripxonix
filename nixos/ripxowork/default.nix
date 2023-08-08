@@ -71,10 +71,10 @@
   # Tell Xorg to use the nvidia driver
   services.xserver.videoDrivers = [ "nvidia" ];
 
-    environment.systemPackages = with pkgs; [
-        kicad
-        (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server]))
-      ];
+  environment.systemPackages = with pkgs; [
+    kicad
+    (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
+  ];
 
 
   hardware.nvidia = {
