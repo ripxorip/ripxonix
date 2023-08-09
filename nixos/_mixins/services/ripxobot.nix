@@ -11,7 +11,7 @@
 
   # This needs my full environment, hmm, user service instead? Needs som more investigation!
   systemd.services.ripxobot-housekeeper = {
-    path = [ "/run/wrappers/" pkgs.coreutils pkgs.gawk pkgs.syncoid pkgs.tailscale pkgs.matrix-sh ];
+    path = [ "/run/wrappers/" pkgs.coreutils pkgs.gawk pkgs.syncoid pkgs.tailscale pkgs.matrix-sh pkgs.zfs ];
     unitConfig = {
       Description = "The ripxobot housekeeper";
       Requires = [ "local-fs.targetz" ];

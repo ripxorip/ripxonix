@@ -3,14 +3,20 @@
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
     (import ./disks.nix { })
+    # ../_mixins/services/ripxobot.nix
   ];
 
-  boot.supportedFilesystems = [ "zfs" ];
-  boot.zfs.forceImportRoot = false;
-  boot.zfs.devNodes = "/dev/disk/by-partuuid";
-  boot.zfs.extraPools = [ "zfsdata" ];
+  # For playing with zfs
+  # boot.supportedFilesystems = [ "zfs" ];
+  # boot.zfs.forceImportRoot = false;
+  # boot.zfs.devNodes = "/dev/disk/by-partuuid";
+  # boot.zfs.extraPools = [ "zfsdata" ];
+  # networking.hostId = "9aa35b9a";
 
-  networking.hostId = "9aa35b9a";
+  # Override the time of day to run the housekeeper
+  # systemd.timers.ripxobot-housekeeper.timerConfig.OnCalendar = lib.mkForce "*-*-* 01:00:00";
+  # Enable once the housekeeper is stable
+  # systemd.timers.ripxobot-housekeeper.enable = false;
 
   swapDevices = [{
     device = "/swap";
