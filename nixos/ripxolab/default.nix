@@ -73,14 +73,23 @@
   # Working nfs example below
   # Just need to make sure that the zfs dataset exists
   # Mount using e.g : sudo mount -t nfs -o vers=4 10.0.0.175:/export /mnt
-  fileSystems."/export" = {
+
+  # Non-backup data
+  fileSystems."/export/byte_bunker" = {
     device = "/mnt/nvme_zfsdata/byte_bunker";
+    options = [ "bind" ];
+  };
+
+  # Backed up data
+  fileSystems."/export/byte_vault" = {
+    device = "/mnt/zfsdata/storage/byte_vault";
     options = [ "bind" ];
   };
 
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''
-    /export  ripxoarch.local(rw,nohide,no_root_squash,insecure,no_subtree_check)
+    /export/byte_bunker  ripxoarch.local(rw,nohide,no_root_squash,insecure,no_subtree_check)
+    /export/byte_vault  ripxoarch.local(rw,nohide,no_root_squash,insecure,no_subtree_check)
   '';
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
