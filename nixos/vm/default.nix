@@ -5,6 +5,11 @@
     (import ./disks.nix { })
   ];
 
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
+  networking.hostId = "9aa35b9a";
+  boot.zfs.extraPools = [ "zfsdata" ];
+
   swapDevices = [{
     device = "/swap";
     size = 1024;
@@ -12,7 +17,6 @@
 
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "ohci_pci" "ehci_pci" "virtio_pci" "ahci" "usbhid" "sr_mod" "virtio_blk" ];
-    kernelPackages = pkgs.linuxPackages_latest;
 
     loader = {
       efi.canTouchEfiVariables = true;
