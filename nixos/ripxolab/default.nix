@@ -80,7 +80,7 @@
 
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''
-    /export  ripxoarch.local(rw,nohide,insecure,no_subtree_check) ripxoarch.local(rw,nohide,insecure,no_subtree_check)
+    /export  ripxoarch.local(rw,nohide,no_root_squash,insecure,no_subtree_check)
   '';
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
