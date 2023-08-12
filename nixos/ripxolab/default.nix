@@ -37,7 +37,7 @@
   # Override the time of day to run the housekeeper
   systemd.timers.ripxobot-housekeeper.timerConfig.OnCalendar = lib.mkForce "*-*-* 01:00:00";
   # Enable once the housekeeper is stable
-  systemd.timers.ripxobot-housekeeper.enable = false;
+  systemd.timers.ripxobot-housekeeper.enable = true;
 
   hardware.opengl = {
     enable = true;
