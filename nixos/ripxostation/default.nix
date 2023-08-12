@@ -10,7 +10,9 @@
   ];
 
   boot = {
-    initrd.availableKernelModules = [ "xhci_pci" "ohci_pci" "ehci_pci" "virtio_pci" "ahci" "usbhid" "sr_mod" "virtio_blk" ];
+    initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+
+    kernelModules = [ "kvm-amd" ];
 
     loader = {
       efi.canTouchEfiVariables = true;
@@ -41,32 +43,28 @@
   services.envfs.enable = true;
 
   fileSystems."/" =
-    {
-      device = "rootp/root";
+    { device = "rootp/root";
       fsType = "zfs";
-      neededForBoot = true;
     };
 
   fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/C3BD-7E85";
+    { device = "/dev/disk/by-uuid/DBC6-6042";
       fsType = "vfat";
     };
 
   fileSystems."/home" =
-    {
-      device = "rootp/home";
+    { device = "rootp/home";
       fsType = "zfs";
     };
 
   fileSystems."/nix" =
-    {
-      device = "rootp/nix";
+    { device = "rootp/nix";
       fsType = "zfs";
     };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/a054b28a-73b3-4f16-a70a-9e60d4cd05f1"; }];
+    [ { device = "/dev/disk/by-uuid/ea121913-0867-416d-89ea-0243206ce592"; }
+    ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -81,4 +79,5 @@
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
