@@ -22,8 +22,16 @@
       timeout = 10;
     };
 
+    kernelParams = [ "amd_iommu=on" "vfio-pci.ids=10de:1f07,10de:10f9,10de:1ada,10de:1adb" ];
+
     initrd = {
-      kernelModules = [ "zfs" ];
+      kernelModules = [
+        "vfio_pci"
+        "vfio"
+        "vfio_iommu_type1"
+        "vfio_virqfd"
+        "zfs"
+      ];
 
       postDeviceCommands = ''
         zpool import -lf rootp
@@ -43,28 +51,31 @@
   services.envfs.enable = true;
 
   fileSystems."/" =
-    { device = "rootp/root";
+    {
+      device = "rootp/root";
       fsType = "zfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/DBC6-6042";
+    {
+      device = "/dev/disk/by-uuid/DBC6-6042";
       fsType = "vfat";
     };
 
   fileSystems."/home" =
-    { device = "rootp/home";
+    {
+      device = "rootp/home";
       fsType = "zfs";
     };
 
   fileSystems."/nix" =
-    { device = "rootp/nix";
+    {
+      device = "rootp/nix";
       fsType = "zfs";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/ea121913-0867-416d-89ea-0243206ce592"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/ea121913-0867-416d-89ea-0243206ce592"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
