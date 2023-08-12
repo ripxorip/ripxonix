@@ -51,6 +51,19 @@
 
       # The home-manager configurations (e.g): home-manager switch --flake ~/dev/ripxonix/#ripxorip@ripxowork
       homeConfigurations = {
+        "ripxorip@ripxostation" = lib.homeManagerConfiguration {
+          modules = [
+            ./home-manager
+          ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs stateVersion;
+            desktop = "gnome";
+            hostname = "ripxostation";
+            platform = "x86_64-linux";
+            username = "ripxorip";
+          };
+        };
         "ripxorip@ripxowork" = lib.homeManagerConfiguration {
           modules = [
             ./home-manager
@@ -128,6 +141,18 @@
         in
         {
           #sudo nixos-rebuild switch --flake ~/dev/ripxonix/#ripxowork
+          ripxostation = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion;
+              hostname = "ripxostation";
+              username = "ripxorip";
+              desktop = "gnome";
+            };
+          };
           ripxowork = lib.nixosSystem {
             modules = [
               ./nixos
