@@ -1,14 +1,12 @@
-# Main workstation # Currently in a VM to get the hang of things
-{ config, modulesPath, lib, pkgs, ... }:
+# Main workstation
+{ config, lib, pkgs, ... }:
 {
   imports = [
-    # Start as a VM
-    (modulesPath + "/profiles/qemu-guest.nix")
     ../_mixins/services/tailscale.nix
     ../_mixins/services/syncthing.nix
     ../_mixins/services/flatpak.nix
     ../_mixins/services/pipewire.nix
-    #../_mixins/virt
+    ../_mixins/virt
   ];
 
   boot = {
