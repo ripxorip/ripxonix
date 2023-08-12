@@ -21,40 +21,54 @@
       systemd-boot.memtest86.enable = true;
       timeout = 10;
     };
+
+    initrd = {
+      kernelModules = [ "zfs" ];
+
+      postDeviceCommands = ''
+        zpool import -lf rootp
+      '';
+    };
+    supportedFilesystems = [ "zfs" ];
+
+    zfs = {
+      devNodes = "/dev/disk/by-partlabel";
+      forceImportRoot = true;
+    };
   };
+
+  networking.hostId = "1ba30e4b";
 
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
   services.envfs.enable = true;
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/2415ea65-b291-4dce-bbad-c67855a1b24c";
-      fsType = "btrfs";
-      options = [ "subvol=@nix_root" "noatime" "compress=lzo" "ssd" "space_cache=v2" ];
+      device = "rootp/root";
+      fsType = "zfs";
+      neededForBoot = true;
     };
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/7C3E-7058";
+      device = "/dev/disk/by-uuid/C3BD-7E85";
       fsType = "vfat";
     };
 
   fileSystems."/home" =
     {
-      device = "/dev/disk/by-uuid/2415ea65-b291-4dce-bbad-c67855a1b24c";
-      fsType = "btrfs";
-      options = [ "subvol=@nix_home" "noatime" "compress=lzo" "ssd" "space_cache=v2" ];
+      device = "rootp/home";
+      fsType = "zfs";
     };
 
   fileSystems."/nix" =
     {
-      device = "/dev/disk/by-uuid/2415ea65-b291-4dce-bbad-c67855a1b24c";
-      fsType = "btrfs";
-      options = [ "subvol=@nix_nix" "noatime" "compress=lzo" "ssd" "space_cache=v2" ];
+      device = "rootp/nix";
+      fsType = "zfs";
     };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/3a46a5ce-4a75-4d43-b83b-91950afd8784"; }];
+    [{ device = "/dev/disk/by-uuid/a054b28a-73b3-4f16-a70a-9e60d4cd05f1"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
