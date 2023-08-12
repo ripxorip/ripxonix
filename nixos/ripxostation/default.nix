@@ -9,6 +9,13 @@
     ../_mixins/virt
   ];
 
+  # Auto login
+  services.xserver.displayManager.autoLogin.user = "ripxorip";
+  services.xserver.displayManager.autoLogin.enable = true;
+
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
+
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
 
