@@ -1,5 +1,5 @@
 # Main workstation # Currently in a VM to get the hang of things
-{ config, lib, pkgs, ... }:
+{ config, modulesPath, lib, pkgs, ... }:
 {
   imports = [
     # Start as a VM
