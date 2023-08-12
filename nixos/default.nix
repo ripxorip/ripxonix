@@ -29,6 +29,7 @@
       python3
       zsh
       hdparm
+      nfs-utils
     ];
     variables = {
       EDITOR = "vim";
