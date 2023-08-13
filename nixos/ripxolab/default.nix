@@ -20,6 +20,9 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
+  # Syncthing
+  services.syncthing.guiAddress = "0.0.0.0:8384";
+
   # zfs
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.forceImportRoot = false;
