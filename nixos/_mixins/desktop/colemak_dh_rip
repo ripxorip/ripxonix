@@ -1,0 +1,44 @@
+partial alphanumeric_keys modifier_keys
+xkb_symbols "rip" {
+  name[Group1] = "Colemak-DH Ripxorip";
+
+  include "us(altgr-intl)"
+
+  // key <KEY_NAME>   {   [   default,    Shift,  AltGr,    AltGr+Shift   ]   };
+
+  //  <AD01> Q has not changed from QWERTY
+  //  <AD02> W has not changed from QWERTY
+  key <AD03> { [ f,         F,     f,          F          ] };
+  key <AD04> { [ p,         P,     odiaeresis, Odiaeresis ] };
+  key <AD05> { [ b,         B,     b,          B          ] };
+  key <AD06> { [ j,         J,     idiaeresis, Idiaeresis ] };
+  key <AD07> { [ l,         L,     oslash,     Ooblique   ] };
+  key <AD08> { [ u,         U,     uacute,     Uacute     ] };
+  key <AD09> { [ y,         Y,     udiaeresis, Udiaeresis ] };
+  key <AD10> { [ semicolon, colon, paragraph,  degree     ] };
+
+  key <AC01> { [ a, A, aring, Aring ] };
+  key <AC02> { [ r, R, adiaeresis, Adiaeresis ] };
+  key <AC03> { [ s, S, odiaeresis,  Odiaeresis    ] };
+  key <AC04> { [ t, T, thorn,      THORN      ] };
+  //  <AC05> G has not changed from QWERTY
+  key <AC06> { [ m, M, mu,         mu         ] };
+  key <AC07> { [ n, N, ntilde,     Ntilde     ] };
+  key <AC08> { [ e, E, eacute,     Eacute     ] };
+  key <AC09> { [ i, I, iacute,     Iacute     ] };
+  key <AC10> { [ o, O, odiaeresis,     Odiaeresis     ] };
+
+  key <AB01> { [ x, X, oe,        OE       ] };
+  key <AB02> { [ c, C, copyright, cent     ] };
+  key <AB03> { [ d, D, eth,       ETH      ] };
+  //  <AB04> V has not changed from QWERTY
+  key <AB05> { [ z, Z, ae,        AE       ] };
+  key <AB06> { [ k, K, oe,        OE       ] };
+  key <AB07> { [ h, H, h,         H        ] };
+
+  // I cannot for my life make CAPS->L_CTRL work here, will use the
+  // xkb:caps:ctrl instead for now..
+  // key <CAPS> { [ Control_L ] };
+
+  include "level3(ralt_switch)"
+};

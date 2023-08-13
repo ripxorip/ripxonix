@@ -6,9 +6,17 @@
   services.xserver.enable = true;
   services.xserver.libinput.enable = true;
 
-  services.xserver.layout = "us";
-  services.xserver.xkbVariant = "colemak_dh";
-  services.xserver.xkbOptions = "eurosign:e,caps:ctrl_modifier";
+services.xserver = {
+  xkbOptions = "eurosign:e,caps:ctrl_modifier";
+  layout = "rip";
+  extraLayouts.rip = {
+    description = "Ripxorip Colemak DH";
+    languages = [ "en" "se" ];
+    symbolsFile =
+        ./colemak_dh_rip;
+  };
+};
+
 
   hardware.opengl = {
     enable = true;

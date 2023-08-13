@@ -4,7 +4,7 @@ with lib.hm.gvariant;
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
       xkb-options = [ "eurosign:e" "caps:ctrl_modifier" ];
-      sources = [ (mkTuple [ "xkb" "us+colemak_dh" ]) ];
+      sources = [ (mkTuple [ "xkb" "rip" ]) ];
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {

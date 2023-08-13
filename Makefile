@@ -22,4 +22,4 @@ home_build:
 	sleep 3
 	sudo reboot
 os:
-	sudo nixos-rebuild switch --show-trace --flake ~/dev/ripxonix/#${HOSTNAME}
+	sudo nixos-rebuild switch --flake ~/dev/ripxonix/#${HOSTNAME}
