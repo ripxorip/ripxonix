@@ -22,3 +22,7 @@ set number
 set rnu
 
 imap <c-x><c-x> <plug>(fzf-complete-path)
+" Search ergonomics
+vnoremap \\ y:Rg "<C-R>""<CR>
+nnoremap \ :Rg<SPACE>
+nnoremap \\ :Rg<CR>

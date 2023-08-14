@@ -48,6 +48,7 @@ in
       playground
       fzf-vim
       vim-tmux-navigator
+      vim-unimpaired
     ];
 
     extraPackages = with pkgs; [
