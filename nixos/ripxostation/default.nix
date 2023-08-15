@@ -81,6 +81,12 @@
       fsType = "zfs";
     };
 
+  fileSystems."/var/lib/libvirt/images" =
+    {
+      device = "rootp/libvirt_images";
+      fsType = "zfs";
+    };
+
   swapDevices =
     [{ device = "/dev/disk/by-uuid/ea121913-0867-416d-89ea-0243206ce592"; }];
 
