@@ -72,6 +72,8 @@
   services.xserver.videoDrivers = [ "nvidia" ];
 
   environment.systemPackages = with pkgs; [
+    obs-studio
+    remmina
     kicad
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
