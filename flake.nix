@@ -26,6 +26,7 @@
     , nix-formatter-pack
     , home-manager
     , nixpkgs
+    , nixos-hardware
     , agenix
     , ...
     } @ inputs:
@@ -157,6 +158,7 @@
             modules = [
               ./nixos
               agenix.nixosModules.age
+              nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
             ];
             specialArgs = {
               inherit inputs outputs stateVersion;
