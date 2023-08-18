@@ -63,6 +63,7 @@
 
 
   environment.systemPackages = with pkgs; [
+    gomuks
     obs-studio
     remmina
     kicad
