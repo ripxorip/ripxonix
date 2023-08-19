@@ -13,8 +13,7 @@
   services.xserver.displayManager.autoLogin.user = "ripxorip";
   services.xserver.displayManager.autoLogin.enable = true;
 
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
+  hardware.bluetooth.enable = true;
 
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
@@ -100,6 +99,7 @@
   environment.systemPackages = with pkgs; [
     #kicad
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
+    barrier
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
