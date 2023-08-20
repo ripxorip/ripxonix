@@ -1,4 +1,4 @@
-# Dell XPS 9510
+# Dell XPS 9520
 { config, lib, pkgs, ... }:
 {
   imports = [
@@ -8,6 +8,8 @@
     ../_mixins/services/pipewire.nix
     ../_mixins/virt
   ];
+
+  hardware.bluetooth.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
