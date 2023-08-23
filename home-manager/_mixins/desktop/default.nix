@@ -15,7 +15,7 @@
 
       settings = {
         font_family = "Iosevka NF SemiBold";
-        font_size = 11;
+        font_size = 12;
 
         scrollback_lines = 10000;
         placement_strategy = "center";
