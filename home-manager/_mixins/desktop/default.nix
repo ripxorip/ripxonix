@@ -14,7 +14,7 @@
       theme = "GitHub Light";
 
       settings = {
-        font_family = "Iosevka NF SemiBold";
+        font_family = "Iosevka NF Medium";
         font_size = 12;
 
         scrollback_lines = 10000;
