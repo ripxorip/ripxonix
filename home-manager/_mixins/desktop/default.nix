@@ -24,7 +24,7 @@
         input_delay = 1;
         sync_to_monitor = "no";
         enable_audio_bell = "no";
-        hide_window_decorations = "yes";
+        hide_window_decorations = "no";
         allow_remote_control = "yes";
       };
 
