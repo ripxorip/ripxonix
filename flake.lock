@@ -216,7 +216,28 @@
         "nix-formatter-pack": "nix-formatter-pack",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "waveforms": "waveforms"
+      }
+    },
+    "waveforms": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1692789959,
+        "narHash": "sha256-Wh82vQvP5o8VpZy/K4XORA1uT4ZIKxKHcM5XGUlICQU=",
+        "owner": "ripxorip",
+        "repo": "waveforms-flake",
+        "rev": "572807c890f148c84b7c5f0b78c80ebb41144c82",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ripxorip",
+        "repo": "waveforms-flake",
+        "type": "github"
       }
     }
   },

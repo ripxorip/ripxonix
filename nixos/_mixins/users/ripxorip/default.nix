@@ -21,6 +21,7 @@ in
     extraGroups = [
       "wheel"
       "dialout"
+      "plugdev"
     ] # Enable ‘sudo’ for the user.
     ++ ifExists [
       "docker"

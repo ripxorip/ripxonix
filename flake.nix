@@ -20,6 +20,9 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
+    waveforms.url = "github:ripxorip/waveforms-flake";
+    waveforms.inputs.nixpkgs.follows = "nixpkgs";
+
   };
   outputs =
     { self
@@ -28,6 +31,7 @@
     , nixpkgs
     , nixos-hardware
     , agenix
+    , waveforms
     , ...
     } @ inputs:
     let
@@ -159,6 +163,7 @@
               ./nixos
               agenix.nixosModules.age
               nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
+              waveforms.nixosModule
             ];
             specialArgs = {
               inherit inputs outputs stateVersion;
