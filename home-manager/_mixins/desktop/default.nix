@@ -11,11 +11,11 @@
   programs = {
     kitty = {
       enable = true;
-      theme = "Catppuccin-Macchiato";
+      theme = "GitHub Light";
 
       settings = {
-        font_family = "Iosevka NF";
-        font_size = 13;
+        font_family = "Iosevka NF SemiBold";
+        font_size = 11;
 
         scrollback_lines = 10000;
         placement_strategy = "center";

@@ -45,6 +45,13 @@
     enable = false;
   };
 
+  programs.bat = {
+      enable = true;
+      config = {
+          theme = "GitHub";
+      };
+  };
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 }
