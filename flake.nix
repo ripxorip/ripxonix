@@ -98,7 +98,7 @@
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs stateVersion;
-            desktop = "gnome";
+            desktop = "plasma";
             hostname = "vm";
             platform = "x86_64-linux";
             username = "ripxorip";
@@ -188,7 +188,7 @@
               inherit inputs outputs stateVersion;
               hostname = "vm";
               username = "ripxorip";
-              desktop = "gnome";
+              desktop = "plasma";
             };
           };
           ripxopad = lib.nixosSystem {
