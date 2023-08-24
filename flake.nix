@@ -23,6 +23,8 @@
     waveforms.url = "github:ripxorip/waveforms-flake";
     waveforms.inputs.nixpkgs.follows = "nixpkgs";
 
+    darkmode_flag.url = "github:boolean-option/true";
+
   };
   outputs =
     { self
@@ -32,6 +34,7 @@
     , nixos-hardware
     , agenix
     , waveforms
+    , darkmode_flag
     , ...
     } @ inputs:
     let
@@ -44,6 +47,7 @@
       systems = [ "x86_64-linux" "aarch64-linux" ];
       forEachSystem = f: lib.genAttrs systems (sys: f pkgsFor.${sys});
       pkgsFor = nixpkgs.legacyPackages;
+      darkmode = darkmode_flag.value;
     in
     {
       inherit lib;
@@ -62,7 +66,7 @@
           ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion;
+            inherit inputs outputs stateVersion darkmode;
             desktop = "plasma";
             hostname = "ripxostation";
             platform = "x86_64-linux";
@@ -75,7 +79,7 @@
           ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion;
+            inherit inputs outputs stateVersion darkmode;
             desktop = "plasma";
             hostname = "ripxowork";
             platform = "x86_64-linux";
@@ -88,7 +92,7 @@
           ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion;
+            inherit inputs outputs stateVersion darkmode;
             desktop = "gnome";
             hostname = "ripxolab";
             platform = "x86_64-linux";
@@ -101,7 +105,7 @@
           ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion;
+            inherit inputs outputs stateVersion darkmode;
             desktop = "plasma";
             hostname = "vm";
             platform = "x86_64-linux";
@@ -114,7 +118,7 @@
           ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion;
+            inherit inputs outputs stateVersion darkmode;
             desktop = "gnome";
             hostname = "ripxopad";
             platform = "x86_64-linux";
@@ -127,7 +131,7 @@
           ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion;
+            inherit inputs outputs stateVersion darkmode;
             hostname = "ripxonode";
             platform = "x86_64-linux";
             username = "ripxorip";

@@ -22,6 +22,21 @@
         "type": "github"
       }
     },
+    "darkmode_flag": {
+      "locked": {
+        "lastModified": 1657739253,
+        "narHash": "sha256-L9eyTL7njtPBUYmZRYFKCzQFDgua9U9oE7UwCzjZfl8=",
+        "owner": "boolean-option",
+        "repo": "true",
+        "rev": "6ecb49143ca31b140a5273f1575746ba93c3f698",
+        "type": "github"
+      },
+      "original": {
+        "owner": "boolean-option",
+        "repo": "true",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -211,6 +226,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "darkmode_flag": "darkmode_flag",
         "disko": "disko",
         "home-manager": "home-manager_2",
         "nix-formatter-pack": "nix-formatter-pack",

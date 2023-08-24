@@ -1,4 +1,4 @@
-_: {
+{darkmode, ...}: {
   programs = {
     git = {
       enable = true;
@@ -8,7 +8,7 @@ _: {
           features = "decorations";
           navigate = true;
           side-by-side = true;
-          light = true;
+          light = !darkmode;
         };
       };
       aliases = {

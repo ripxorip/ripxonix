@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, darkmode, ... }: {
   imports = [
     ./tmux.nix
     ./zsh.nix
@@ -47,7 +47,7 @@
 
   programs.bat = {
     enable = true;
-    config = {
+    config = lib.mkIf (!darkmode) {
       theme = "GitHub";
     };
   };
