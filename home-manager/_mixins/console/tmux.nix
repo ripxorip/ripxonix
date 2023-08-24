@@ -119,6 +119,7 @@ in
 
     plugins = [
       pkgs.tmuxPlugins.yank
+      pkgs.tmuxPlugins.resurrect
     ];
 
     # Replaces ~/.tmux.conf
