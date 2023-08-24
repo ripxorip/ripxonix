@@ -59,71 +59,57 @@
     '';
 
     dark_theme = ''
-      # This is how to see colors...
-      # for i in {0..255}; do
-      #    printf "\x1b[38;5;''${i}mcolour''${i}\x1b[0m\n"
-      #    done
-      set -g status-style fg=colour240
-      set -g pane-border-style fg=colour240
-      set -g pane-active-border-style fg=colour245
-      set-window-option -g window-status-current-style fg=colour250
-      # --> Catppuccin (Macchiato)
-      thm_bg="#181926"
-      thm_fg="#cad3f5"
-      thm_cyan="#91d7e3"
-      thm_black="#1e2030"
-      thm_gray="#494d64"
-      thm_magenta="#c6a0f6"
-      thm_pink="#f5bde6"
-      thm_red="#ed8796"
-      thm_green="#a6da95"
-      thm_yellow="#eed49f"
-      thm_blue="#8aadf4"
-      thm_orange="#f5a97f"
-      thm_black4="#5b6078"
+    ## COLORSCHEME: gruvbox dark (medium)
+set-option -g status "on"
 
-      # ----------------------------=== Theme ===--------------------------
+# default statusbar color
+set-option -g status-style bg=colour237,fg=colour223 # bg=bg1, fg=fg1
 
+# default window title colors
+set-window-option -g window-status-style bg=colour214,fg=colour237 # bg=yellow, fg=bg1
 
-      # status
-      set -g status "on"
-      set -g status-bg "''${thm_bg}"
-      set -g status-justify "left"
-      set -g status-left-length "100"
-      set -g status-right-length "100"
+# default window with an activity alert
+set-window-option -g window-status-activity-style bg=colour237,fg=colour248 # bg=bg1, fg=fg3
 
-      # messages
-      set -g message-style "fg=''${thm_cyan},bg=''${thm_gray},align=centre"
-      set -g message-command-style "fg=''${thm_cyan},bg=''${thm_gray},align=centre"
+# active window title colors
+set-window-option -g window-status-current-style bg=red,fg=colour237 # fg=bg1
 
-      # panes
-      set -g pane-border-style "fg=''${thm_gray}"
-      set -g pane-active-border-style "fg=''${thm_blue}"
+# pane border
+set-option -g pane-active-border-style fg=colour250 #fg2
+set-option -g pane-border-style fg=colour237 #bg1
 
-      # windows
-      setw -g window-status-activity-style "fg=''${thm_fg},bg=''${thm_bg},none"
-      setw -g window-status-separator ""
-      setw -g window-status-style "fg=''${thm_fg},bg=''${thm_bg},none"
+# message infos
+set-option -g message-style bg=colour239,fg=colour223 # bg=bg2, fg=fg1
 
-      # --------=== Statusline
+# writing commands inactive
+set-option -g message-command-style bg=colour239,fg=colour223 # bg=fg3, fg=bg1
 
-      set -g status-left ""
-      set -g status-right "#[fg=$thm_pink,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_bg,bg=$thm_pink,nobold,nounderscore,noitalics] #[fg=$thm_fg,bg=$thm_gray] #W #{?client_prefix,#[fg=$thm_red],#[fg=$thm_green]}#[bg=$thm_gray]#{?client_prefix,#[bg=$thm_red],#[bg=$thm_green]}#[fg=$thm_bg] #[fg=$thm_fg,bg=$thm_gray] #S "
+# pane number display
+set-option -g display-panes-active-colour colour250 #fg2
+set-option -g display-panes-colour colour237 #bg1
 
-      # current_dir
-      setw -g window-status-format "#[fg=$thm_bg,bg=$thm_blue] #I #[fg=$thm_fg,bg=$thm_gray] #{b:pane_current_path} "
-      setw -g window-status-current-format "#[fg=$thm_bg,bg=$thm_orange] #I #[fg=$thm_fg,bg=$thm_bg] #{b:pane_current_path} "
+# clock
+set-window-option -g clock-mode-colour colour109 #blue
 
-      # parent_dir/current_dir
-      # setw window-status-format "#[fg=colour232,bg=colour111] #I #[fg=colour222,bg=colour235] #(echo '#{pane_current_path}' | rev | cut -d'/' -f-2 | rev) "
-      # setw window-status-current-format "#[fg=colour232,bg=colour208] #I #[fg=colour255,bg=colour237] #(echo '#{pane_current_path}' | rev | cut -d'/' -f-2 | rev) "
+# bell
+set-window-option -g window-status-bell-style bg=colour167,fg=colour235 # bg=red, fg=bg
 
-      # --------=== Modes
-      setw -g clock-mode-colour "''${thm_blue}"
-      setw -g mode-style "fg=''${thm_pink} bg=''${thm_black4} bold"
+## Theme settings mixed with colors (unfortunately, but there is no cleaner way)
+set-option -g status-justify "left"
+set-option -g status-left-style none
+set-option -g status-left-length "80"
+set-option -g status-right-style none
+set-option -g status-right-length "80"
+set-window-option -g window-status-separator ""
+
+set-option -g status-left "#[bg=colour241,fg=colour248] #S #[bg=colour237,fg=colour241,nobold,noitalics,nounderscore]"
+set-option -g status-right "#[bg=colour237,fg=colour239 nobold, nounderscore, noitalics]#[bg=colour239,fg=colour246] %Y-%m-%d  %H:%M #[bg=colour239,fg=colour248,nobold,noitalics,nounderscore]#[bg=colour248,fg=colour237] #h "
+
+set-window-option -g window-status-current-format "#[bg=colour214,fg=colour237,nobold,noitalics,nounderscore]#[bg=colour214,fg=colour239] #I #[bg=colour214,fg=colour239,bold] #W#{?window_zoomed_flag,*Z,} #[bg=colour237,fg=colour214,nobold,noitalics,nounderscore]"
+set-window-option -g window-status-format "#[bg=colour239,fg=colour237,noitalics]#[bg=colour239,fg=colour223] #I #[bg=colour239,fg=colour223] #W #[bg=colour237,fg=colour239,noitalics]"
+
     '';
 
-    # Shall be conditional
     theme = if darkmode then dark_theme else light_theme;
 in{
   programs.tmux = {
