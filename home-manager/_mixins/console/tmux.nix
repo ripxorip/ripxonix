@@ -64,10 +64,10 @@ let
     set-option -g status "on"
 
     # default statusbar color
-    set-option -g status-style bg=colour237,fg=colour223 # bg=bg1, fg=fg1
+    set-option -g status-style bg=colour237,fg=colour15 # bg=bg1, fg=fg1
 
     # default window title colors
-    set-window-option -g window-status-style bg=colour214,fg=colour237 # bg=yellow, fg=bg1
+    set-window-option -g window-status-style bg=colour4,fg=colour237 # bg=yellow, fg=bg1
 
     # default window with an activity alert
     set-window-option -g window-status-activity-style bg=colour237,fg=colour248 # bg=bg1, fg=fg3
@@ -80,10 +80,10 @@ let
     set-option -g pane-border-style fg=colour237 #bg1
 
     # message infos
-    set-option -g message-style bg=colour239,fg=colour223 # bg=bg2, fg=fg1
+    set-option -g message-style bg=colour239,fg=colour15 # bg=bg2, fg=fg1
 
     # writing commands inactive
-    set-option -g message-command-style bg=colour239,fg=colour223 # bg=fg3, fg=bg1
+    set-option -g message-command-style bg=colour239,fg=colour15 # bg=fg3, fg=bg1
 
     # pane number display
     set-option -g display-panes-active-colour colour250 #fg2
@@ -106,8 +106,8 @@ let
     set-option -g status-left "#[bg=colour241,fg=colour248] #S #[bg=colour237,fg=colour241,nobold,noitalics,nounderscore]"
     set-option -g status-right "#[bg=colour237,fg=colour239 nobold, nounderscore, noitalics]#[bg=colour239,fg=colour246] %Y-%m-%d  %H:%M #[bg=colour239,fg=colour248,nobold,noitalics,nounderscore]#[bg=colour248,fg=colour237] #h "
 
-    set-window-option -g window-status-current-format "#[bg=colour214,fg=colour237,nobold,noitalics,nounderscore]#[bg=colour214,fg=colour239] #I #[bg=colour214,fg=colour239,bold] #W#{?window_zoomed_flag,*Z,} #[bg=colour237,fg=colour214,nobold,noitalics,nounderscore]"
-    set-window-option -g window-status-format "#[bg=colour239,fg=colour237,noitalics]#[bg=colour239,fg=colour223] #I #[bg=colour239,fg=colour223] #W #[bg=colour237,fg=colour239,noitalics]"
+    set-window-option -g window-status-current-format "#[bg=colour4,fg=colour237,nobold,noitalics,nounderscore]#[bg=colour4,fg=colour239] #I #[bg=colour4,fg=colour239,bold] #W#{?window_zoomed_flag,*Z,} #[bg=colour237,fg=colour4,nobold,noitalics,nounderscore]"
+    set-window-option -g window-status-format "#[bg=colour239,fg=colour237,noitalics]#[bg=colour239,fg=colour15] #I #[bg=colour239,fg=colour15] #W #[bg=colour237,fg=colour239,noitalics]"
 
   '';
 
