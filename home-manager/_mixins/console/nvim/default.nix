@@ -28,46 +28,46 @@ let
     };
   };
 
-    colorscheme_darkmode = ''
-        local utils = require('utils')
-        local cmd = vim.cmd
+  colorscheme_darkmode = ''
+    local utils = require('utils')
+    local cmd = vim.cmd
 
-        utils.opt('o', 'termguicolors', true)
-        utils.opt('o', 'background', 'dark')
-        -- cmd 'colorscheme onedark'
+    utils.opt('o', 'termguicolors', true)
+    utils.opt('o', 'background', 'dark')
+    -- cmd 'colorscheme onedark'
 
-        vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+    vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 
-        require("catppuccin").setup()
+    require("catppuccin").setup()
 
-        vim.cmd [[colorscheme catppuccin]]
-    '';
+    vim.cmd [[colorscheme catppuccin]]
+  '';
 
-    colorscheme_light_mode = ''
-        local utils = require('utils')
-        local cmd = vim.cmd
+  colorscheme_light_mode = ''
+    local utils = require('utils')
+    local cmd = vim.cmd
 
-        --utils.opt('o', 'termguicolors', true)
-        --utils.opt('o', 'background', 'dark')
-        -- cmd 'colorscheme onedark'
+    --utils.opt('o', 'termguicolors', true)
+    --utils.opt('o', 'background', 'dark')
+    -- cmd 'colorscheme onedark'
 
-        -- vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+    -- vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 
-        require("catppuccin").setup()
+    require("catppuccin").setup()
 
-        require('github-theme').setup({
-            options = {
-                hide_nc_statusline = false,
+    require('github-theme').setup({
+        options = {
+            hide_nc_statusline = false,
 
-            },
-        })
+        },
+    })
 
-        vim.cmd [[colorscheme github_light]]
-        vim.cmd ('set laststatus=0')
-        -- vim.cmd('colorscheme github_light')
-    '';
+    vim.cmd [[colorscheme github_light]]
+    vim.cmd ('set laststatus=0')
+    -- vim.cmd('colorscheme github_light')
+  '';
 
-    nvim_colorscheme = if darkmode then colorscheme_darkmode else colorscheme_light_mode;
+  nvim_colorscheme = if darkmode then colorscheme_darkmode else colorscheme_light_mode;
 
 in
 {
@@ -113,14 +113,14 @@ in
   };
 
 
-home = {
+  home = {
     file = {
       "${config.xdg.configHome}/nvim/lua/config/colorscheme.lua".text = "${nvim_colorscheme}";
     };
-};
- 
- # FIXME Continue here, by generating the colorscheme.lua file according to the darkmode variable
- # It shall be written and probably be removed from the local .config folder
+  };
+
+  # FIXME Continue here, by generating the colorscheme.lua file according to the darkmode variable
+  # It shall be written and probably be removed from the local .config folder
   xdg.configFile.nvim = {
     source = ./config;
     recursive = true;

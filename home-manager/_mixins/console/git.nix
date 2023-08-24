@@ -1,4 +1,4 @@
-{darkmode, ...}: {
+{ darkmode, ... }: {
   programs = {
     git = {
       enable = true;

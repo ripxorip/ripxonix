@@ -1,21 +1,23 @@
-{ desktop, darkmode, pkgs, ... }: let
+{ desktop, darkmode, pkgs, ... }:
+let
 
-    kitty_light_theme = "GitHub Light";
-    kitty_light_theme_font = "Iosevka NF Bold";
-    kitty_light_theme_font_size = 12;
-    kitty_light_theme_window_decorations = "no";
+  kitty_light_theme = "GitHub Light";
+  kitty_light_theme_font = "Iosevka NF Bold";
+  kitty_light_theme_font_size = 12;
+  kitty_light_theme_window_decorations = "no";
 
-    kitty_dark_theme = "Catppuccin-Macchiato";
-    kitty_dark_theme_font = "Iosevka NF";
-    kitty_dark_theme_font_size = 13;
-    kitty_dark_theme_window_decorations = "yes";
+  kitty_dark_theme = "Catppuccin-Macchiato";
+  kitty_dark_theme_font = "Iosevka NF";
+  kitty_dark_theme_font_size = 13;
+  kitty_dark_theme_window_decorations = "yes";
 
-    kitty_theme = if darkmode then kitty_dark_theme else kitty_light_theme;
-    kitty_theme_font = if darkmode then kitty_dark_theme_font else kitty_light_theme_font;
-    kitty_theme_font_size = if darkmode then kitty_dark_theme_font_size else kitty_light_theme_font_size;
-    kitty_theme_window_decorations = if darkmode then kitty_dark_theme_window_decorations else kitty_light_theme_window_decorations;
+  kitty_theme = if darkmode then kitty_dark_theme else kitty_light_theme;
+  kitty_theme_font = if darkmode then kitty_dark_theme_font else kitty_light_theme_font;
+  kitty_theme_font_size = if darkmode then kitty_dark_theme_font_size else kitty_light_theme_font_size;
+  kitty_theme_window_decorations = if darkmode then kitty_dark_theme_window_decorations else kitty_light_theme_window_decorations;
 
-in{
+in
+{
   imports = [
     (./. + "/${desktop}.nix")
   ];

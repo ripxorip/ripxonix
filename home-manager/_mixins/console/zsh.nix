@@ -3,16 +3,16 @@ let
   get_xterm_export = _desktop:
     if desktop == null then ''export TERM=xterm-256color'' else '''';
 
-    fzf_light_mode_theme = ''
-        export FZF_DEFAULT_OPTS="--color=light"
-    '';
-    fzf_dark_mode_theme = ''
-        export FZF_DEFAULT_OPTS=" \
-          --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
-          --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
-          --color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
-    '';
-    fzf_theme = if darkmode then fzf_dark_mode_theme else fzf_light_mode_theme;
+  fzf_light_mode_theme = ''
+    export FZF_DEFAULT_OPTS="--color=light"
+  '';
+  fzf_dark_mode_theme = ''
+    export FZF_DEFAULT_OPTS=" \
+      --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+      --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+      --color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
+  '';
+  fzf_theme = if darkmode then fzf_dark_mode_theme else fzf_light_mode_theme;
 in
 {
   home = {
