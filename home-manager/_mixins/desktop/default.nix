@@ -3,7 +3,7 @@ let
 
   kitty_light_theme = "GitHub Light";
   kitty_light_theme_font = "Iosevka NF Bold";
-  kitty_light_theme_font_size = 12;
+  kitty_light_theme_font_size = 11;
   kitty_light_theme_window_decorations = "no";
 
   kitty_dark_theme = "Catppuccin-Macchiato";
