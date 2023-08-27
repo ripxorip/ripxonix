@@ -14,14 +14,15 @@ let
   '';
   fzf_theme = if darkmode then fzf_dark_mode_theme else fzf_light_mode_theme;
 
-  ls_colors_bright_mode_hack = if darkmode then "" 
-  else ''
+  ls_colors_bright_mode_hack =
+    if darkmode then ""
+    else ''
       # ls_colors_bright_mode_hack
       export LS_COLORS='fi=00:mi=00:mh=00:ln=01;36:or=01;31:di=01;34:ow=04;01;34:st=34:tw=04;34:'
       LS_COLORS+='pi=01;33:so=01;33:do=01;33:bd=01;33:cd=01;33:su=01;35:sg=01;35:ca=01;35:ex=01;32'
       export LSCOLORS='ExGxDxDxCxDxDxFxFxexEx'
       zstyle ':completion:*' list-colors '=(#b)(--[^ ]#)(*)=38;5;220;1=38;5;216'
-  '';
+    '';
 
 in
 {
