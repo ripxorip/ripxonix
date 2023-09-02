@@ -63,6 +63,8 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
+  # In order for VSCode remote to work
+  programs.nix-ld.enable = true;
 
   environment.systemPackages = with pkgs; [
     gomuks
