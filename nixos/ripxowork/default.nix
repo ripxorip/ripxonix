@@ -71,6 +71,7 @@
     obs-studio
     remmina
     kicad
+    prusa-slicer
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
 }
