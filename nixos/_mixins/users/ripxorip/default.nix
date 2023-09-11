@@ -27,6 +27,7 @@ in
       "docker"
       "podman"
       "jellyfin"
+      "wireshark"
       "libvirtd"
     ];
     packages = with pkgs; [

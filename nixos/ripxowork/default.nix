@@ -16,11 +16,16 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-intel" "usbmon" ];
   boot.extraModulePackages = [ ];
 
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
   services.envfs.enable = true;
+
+  # Hdd sleep udev rule:
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
+  '';
 
   fileSystems."/" =
     {
@@ -72,6 +77,7 @@
     remmina
     kicad
     prusa-slicer
+    wireshark
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
 }

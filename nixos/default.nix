@@ -30,6 +30,7 @@
       zsh
       hdparm
       nfs-utils
+      socat
     ];
     variables = {
       EDITOR = "vim";
