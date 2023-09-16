@@ -100,6 +100,7 @@
     #kicad
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
     barrier
+    prusa-slicer
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
