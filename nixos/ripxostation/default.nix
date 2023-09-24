@@ -101,7 +101,6 @@
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
     barrier
     prusa-slicer
-    gnome-builder
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
