@@ -29,7 +29,6 @@
   environment.systemPackages = with pkgs; [
     vlc
     kitty
-    logseq
     spotify
   ];
 
