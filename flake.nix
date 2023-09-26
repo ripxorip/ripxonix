@@ -240,7 +240,7 @@
                   ];
                 };
                 home-manager.extraSpecialArgs = {
-                  inherit inputs outputs stateVersion;
+                  inherit inputs outputs stateVersion darkmode;
                   desktop = "gnome";
                   hostname = "iso-desktop";
                   username = "ripxorip";
@@ -248,7 +248,7 @@
               }
             ];
             specialArgs = {
-              inherit inputs outputs stateVersion;
+              inherit inputs outputs stateVersion darkmode;
               hostname = "iso-desktop";
               username = "ripxorip";
               desktop = "gnome";
