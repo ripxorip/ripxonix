@@ -30,6 +30,17 @@
   networking.hostId = "ef6b9cc7";
   boot.zfs.extraPools = [ "zfsdata" ];
 
+  services.nginx.enable = true;
+  services.nginx.virtualHosts."philip.ink" = {
+    forceSSL = true;
+    enableACME = true;
+    root = "/var/www/philip.ink";
+  };
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "webmaster@philip.ink";
+  };
+
   # In order for VSCode remote to work
   programs.nix-ld.enable = true;
 
