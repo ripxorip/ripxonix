@@ -97,7 +97,7 @@
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   environment.systemPackages = with pkgs; [
-    #kicad
+    kicad
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
     barrier
     prusa-slicer
