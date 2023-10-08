@@ -4,6 +4,7 @@
 {
   imports = [
     ../_mixins/services/tailscale.nix
+    ../_mixins/services/cockpit.nix
     ../_mixins/services/caddy.nix
     ../_mixins/services/syncthing.nix
     ../_mixins/services/jellyfin.nix
