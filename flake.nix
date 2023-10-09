@@ -23,6 +23,9 @@
     waveforms.url = "github:ripxorip/waveforms-flake";
     waveforms.inputs.nixpkgs.follows = "nixpkgs";
 
+    talon-nix.url = "github:nix-community/talon-nix";
+    talon-nix.inputs.nixpkgs.follows = "nixpkgs";
+
     darkmode_flag.url = "github:boolean-option/true";
 
   };
@@ -33,6 +36,7 @@
     , nixpkgs
     , nixos-hardware
     , agenix
+    , talon-nix
     , waveforms
     , darkmode_flag
     , ...
@@ -168,6 +172,7 @@
               agenix.nixosModules.age
               nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
               waveforms.nixosModule
+              talon-nix.nixosModules.talon
             ];
             specialArgs = {
               inherit inputs outputs stateVersion;
