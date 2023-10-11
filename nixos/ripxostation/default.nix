@@ -96,6 +96,8 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
+  programs.talon.enable = true;
+
   environment.systemPackages = with pkgs; [
     kicad
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))

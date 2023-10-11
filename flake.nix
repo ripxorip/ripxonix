@@ -158,6 +158,7 @@
             modules = [
               ./nixos
               agenix.nixosModules.age
+              talon-nix.nixosModules.talon
             ];
             specialArgs = {
               inherit inputs outputs stateVersion;
