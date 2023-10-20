@@ -79,6 +79,7 @@
     kicad
     prusa-slicer
     wireshark
+    reaper
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
 }
