@@ -4,6 +4,7 @@
     alsa-utils
     pulseaudio
     pulsemixer
+    qpwgraph
   ] ++ lib.optionals (desktop != null) [
     pavucontrol
   ];
