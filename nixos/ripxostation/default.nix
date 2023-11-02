@@ -7,6 +7,7 @@
     ../_mixins/services/flatpak.nix
     ../_mixins/services/pipewire.nix
     ../_mixins/virt
+    ../_mixins/streaming
   ];
 
   # Auto login
