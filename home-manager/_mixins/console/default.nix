@@ -32,6 +32,7 @@
       jq
       dig
       matrix-sh
+      ffmpeg
     ];
 
     sessionVariables = {
