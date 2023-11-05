@@ -142,6 +142,19 @@
             desktop = null;
           };
         };
+        "ripxorip@mserver" = lib.homeManagerConfiguration {
+          modules = [
+            ./home-manager
+          ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs stateVersion darkmode;
+            hostname = "mserver";
+            platform = "x86_64-linux";
+            username = "ripxorip";
+            desktop = null;
+          };
+        };
       };
 
       # The NixOS configurations
@@ -226,6 +239,18 @@
             specialArgs = {
               inherit inputs outputs stateVersion;
               hostname = "ripxonode";
+              username = "ripxorip";
+              desktop = null;
+            };
+          };
+          mserver = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion;
+              hostname = "mserver";
               username = "ripxorip";
               desktop = null;
             };
