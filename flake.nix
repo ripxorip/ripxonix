@@ -71,7 +71,7 @@
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs stateVersion darkmode;
-            desktop = "plasma";
+            desktop = "gnome";
             hostname = "ripxostation";
             platform = "x86_64-linux";
             username = "ripxorip";
@@ -164,7 +164,7 @@
               inherit inputs outputs stateVersion;
               hostname = "ripxostation";
               username = "ripxorip";
-              desktop = "plasma";
+              desktop = "gnome";
             };
           };
           ripxowork = lib.nixosSystem {
