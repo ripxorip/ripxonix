@@ -72,15 +72,46 @@
   swapDevices =
     [{ device = "/dev/sdb"; }];
 
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault
-    true;
-  # networking.interfaces.enp0s5.useDHCP = lib.mkDefault true;
+  networking.usePredictableInterfaceNames = false;
+  # TODO Re-enable when I figure out networking again
+  # networking.interfaces.eth0.useDHCP = true;
 
-  nixpkgs.hostPlatform = lib.mkDefault
-    "x86_64-linux";
+  #
+  # This section below is just to disable ipv6 on Linode
+  # In the future this will be removed so that ipv6 can be
+  # enabled again but for now during development it will be disabled
+  #
+  networking.enableIPv6 = false;
+  boot.kernel.sysctl."net.ipv6.conf.eth0.disable_ipv6" = true;
+
+  systemd.network.enable = true;
+
+  systemd.network.networks."10-eth0" = {
+    matchConfig.Name = "eth0";
+
+    networkConfig = {
+      DHCP = "no";
+
+      Address = "172.232.146.252/24";
+      Gateway = "172.232.146.1";
+
+      Domains = "ip.linodeusercontent.com";
+      DNS = [
+        "178.79.182.5"
+        "176.58.107.5"
+        "176.58.116.5"
+        "176.58.121.5"
+        "151.236.220.5"
+        "212.71.252.5"
+        "212.71.253.5"
+        "109.74.192.20"
+        "109.74.193.20"
+        "109.74.194.20"
+      ];
+    };
+  };
+  # Down to here
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
 }
