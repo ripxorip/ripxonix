@@ -10,6 +10,23 @@
     ../_mixins/streaming
   ];
 
+  # I want to experiment using podman instead of docker for a while
+  virtualisation = {
+    docker = {
+      enable = lib.mkForce false;
+    };
+    podman = {
+      enable = true;
+
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
+
+
   # Auto login
   services.xserver.displayManager.autoLogin.user = "ripxorip";
   services.xserver.displayManager.autoLogin.enable = true;
@@ -104,6 +121,7 @@
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
     barrier
     prusa-slicer
+    podman-compose
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
