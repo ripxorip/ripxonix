@@ -33,7 +33,7 @@
 
   services.caddy = {
     enable = true;
-    virtualHosts."nix.migic.com".extraConfig = ''
+    virtualHosts."migic.com".extraConfig = ''
       reverse_proxy localhost:3123
     '';
   };
