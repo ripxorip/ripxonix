@@ -11,6 +11,7 @@
     ../_mixins/services/pipewire.nix
     ../_mixins/services/sanoid.nix
     ../_mixins/services/ripxobot.nix
+    ../_mixins/streaming
     ../_mixins/virt
   ];
 
