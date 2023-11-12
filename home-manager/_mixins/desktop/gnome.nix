@@ -28,7 +28,21 @@ with lib.hm.gvariant;
       secondary-color = lib.hm.gvariant.mkString "#000000";
     };
 
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
+    };
 
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      binding = lib.hm.gvariant.mkString "<Shift>F12";
+      command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/scripts/run.py -a start_dictation";
+      name = lib.hm.gvariant.mkString "Ripxospeech Start";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      binding = lib.hm.gvariant.mkString "<Shift>F11";
+      command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/scripts/run.py -a stop_dictation";
+      name = lib.hm.gvariant.mkString "Ripxospeech Stop";
+    };
   };
 
   gtk = { };
