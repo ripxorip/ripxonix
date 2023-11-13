@@ -32,6 +32,7 @@
       jq
       dig
       matrix-sh
+      wl-clipboard
     ];
 
     sessionVariables = {
