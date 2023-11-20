@@ -29,19 +29,31 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/" ];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      binding = lib.hm.gvariant.mkString "<Shift>F12";
-      command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/scripts/run.py -a start_dictation";
-      name = lib.hm.gvariant.mkString "Ripxospeech Start";
+      binding = lib.hm.gvariant.mkString "<Shift>F9";
+      command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/scripts/run.py -a start_dictation -e win11_swe";
+      name = lib.hm.gvariant.mkString "Ripxospeech Stop";
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-      binding = lib.hm.gvariant.mkString "<Shift>F11";
-      command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/scripts/run.py -a stop_dictation";
+      binding = lib.hm.gvariant.mkString "<Shift>F10";
+      command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/scripts/run.py -a start_dictation -e talon_dictation";
       name = lib.hm.gvariant.mkString "Ripxospeech Stop";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+      binding = lib.hm.gvariant.mkString "<Shift>F11";
+      command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/scripts/run.py -a start_dictation -e talon_command";
+      name = lib.hm.gvariant.mkString "Ripxospeech Stop";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+      binding = lib.hm.gvariant.mkString "<Shift>F12";
+      command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/scripts/run.py -a stop_dictation";
+      name = lib.hm.gvariant.mkString "Ripxospeech Start";
     };
   };
 
