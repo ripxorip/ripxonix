@@ -58,7 +58,7 @@ with lib.hm.gvariant;
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4" = {
       binding = lib.hm.gvariant.mkString "<Shift>F8";
-      command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/scripts/run.py -a start_gdocs";
+      command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/scripts/run.py -a start_dictation -e gdocs";
       name = lib.hm.gvariant.mkString "Ripxospeech Start";
     };
   };
