@@ -29,7 +29,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/" ];
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/" ];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -53,6 +53,12 @@ with lib.hm.gvariant;
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
       binding = lib.hm.gvariant.mkString "<Shift>F12";
       command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/scripts/run.py -a stop_dictation";
+      name = lib.hm.gvariant.mkString "Ripxospeech Start";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4" = {
+      binding = lib.hm.gvariant.mkString "<Shift>F8";
+      command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/scripts/run.py -a start_gdocs";
       name = lib.hm.gvariant.mkString "Ripxospeech Start";
     };
   };
