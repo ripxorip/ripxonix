@@ -29,6 +29,7 @@ in
       "jellyfin"
       "wireshark"
       "libvirtd"
+      "adbusers"
     ];
     packages = with pkgs; [
       firefox
