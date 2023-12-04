@@ -1,6 +1,6 @@
 { pkgs, darkmode, config, ... }:
 let
-  bolt = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  bolt = pkgs.vimUtils.buildVimPlugin {
     name = "bolt";
     src = pkgs.fetchFromGitHub {
       owner = "ripxorip";
@@ -9,7 +9,7 @@ let
       hash = "sha256-z7/3+/WMlJGQf8VzGgPTpjydFbQsDdCm6IftnZ0K6k4=";
     };
   };
-  github-nvim-theme = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  github-nvim-theme = pkgs.vimUtils.buildVimPlugin {
     name = "GitHub Light";
     src = pkgs.fetchFromGitHub {
       owner = "projekt0n";
@@ -18,7 +18,7 @@ let
       sha256 = "sha256-F0oDNVFw1yExgGD0hPWAvTgi55H/gY0i072nSCs33j4=";
     };
   };
-  vim-ripgrep = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  vim-ripgrep = pkgs.vimUtils.buildVimPlugin {
     name = "vim-ripgrep-2021-11-30";
     src = pkgs.fetchFromGitHub {
       owner = "jremmen";

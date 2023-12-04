@@ -16,7 +16,7 @@
       fzf
       neofetch
       ripgrep
-      exa
+      eza
       fd
       bat
       delta

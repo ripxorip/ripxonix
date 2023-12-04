@@ -28,8 +28,9 @@
 
 
   # Auto login
-  services.xserver.displayManager.autoLogin.user = "ripxorip";
-  services.xserver.displayManager.autoLogin.enable = true;
+  # FIXME (Seems broken in 23.11) , why?
+  # services.xserver.displayManager.autoLogin.user = "ripxorip";
+  # services.xserver.displayManager.autoLogin.enable = true;
 
   hardware.bluetooth.enable = true;
 
