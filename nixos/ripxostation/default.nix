@@ -28,9 +28,10 @@
 
 
   # Auto login
-  # FIXME (Seems broken in 23.11) , why?
-  # services.xserver.displayManager.autoLogin.user = "ripxorip";
-  # services.xserver.displayManager.autoLogin.enable = true;
+  services.xserver.displayManager.autoLogin.user = "ripxorip";
+  services.xserver.displayManager.autoLogin.enable = true;
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
 
   hardware.bluetooth.enable = true;
 
