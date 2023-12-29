@@ -24,13 +24,14 @@
       # Required for containers under podman-compose to be able to talk to each other.
       defaultNetwork.settings.dns_enabled = true;
     };
-    # I want to explore using a genuine Win11 box as station server
+    # I want to explore using a genuine Win11 box as station server,
+    # since the ovmf full was the issue this might be able to set as
+    # standard now?
     libvirtd = {
       enable = true;
       qemu = {
         package = pkgs.qemu_kvm;
         ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
         swtpm.enable = true;
       };
     };
