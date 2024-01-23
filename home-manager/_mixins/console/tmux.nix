@@ -197,19 +197,19 @@ in
         # Make middle-mouse-click paste from the primary selection (without having to hold down Shift).
         bind-key -n MouseDown2Pane run "tmux set-buffer -b primary_selection \"$(xsel -o)\"; tmux paste-buffer -b primary_selection; tmux delete-buffer -b primary_selection"
 
-        bind-key -T root F1 select-window -t 0
-        bind-key -T root F2 select-window -t 1
-        bind-key -T root F3 select-window -t 2
-        bind-key -T root F4 select-window -t 3
-        bind-key -T root F5 select-window -t 4
-        bind-key -T root F6 select-window -t 5
-        bind-key -T root F7 select-window -t 6
-        bind-key -T root F8 select-window -t 7
-        bind-key -T root F9 select-window -t 8
+        #bind-key -T root F1 select-window -t 0
+        #bind-key -T root F2 select-window -t 1
+        #bind-key -T root F3 select-window -t 2
+        #bind-key -T root F4 select-window -t 3
+        #bind-key -T root F5 select-window -t 4
+        #bind-key -T root F6 select-window -t 5
+        #bind-key -T root F7 select-window -t 6
+        #bind-key -T root F8 select-window -t 7
+        #bind-key -T root F9 select-window -t 8
 
-        bind-key -n F10 last-window
-        bind-key -n F11 last-window
-        bind-key -n F12 source-file ~/.dot/tmux/tmux_build_last.conf
+        #bind-key -n F10 last-window
+        #bind-key -n F11 last-window
+        #bind-key -n F12 source-file ~/.dot/tmux/tmux_build_last.conf
 
         # Emulate scrolling by sending up and down keys if these commands are running in the pane
         tmux_commands_with_legacy_scroll="less bat man git"

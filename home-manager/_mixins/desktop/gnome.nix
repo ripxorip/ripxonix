@@ -29,7 +29,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/" ];
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/" ];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -61,6 +61,31 @@ with lib.hm.gvariant;
       command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/ripxospeech.py -a start_dictation -e gdocs";
       name = lib.hm.gvariant.mkString "Ripxospeech Start";
     };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5" = {
+      binding = lib.hm.gvariant.mkString "F1";
+      command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/ripxospeech.py -a start_dictation -e talon_command";
+      name = lib.hm.gvariant.mkString "Talon Command";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6" = {
+      binding = lib.hm.gvariant.mkString "F2";
+      command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/ripxospeech.py -a start_dictation -e win11_swe";
+      name = lib.hm.gvariant.mkString "Win 11";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7" = {
+      binding = lib.hm.gvariant.mkString "F3";
+      command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/ripxospeech.py -a start_dictation -e talon_dictation";
+      name = lib.hm.gvariant.mkString "Talon Dictation";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8" = {
+      binding = lib.hm.gvariant.mkString "F4";
+      command = lib.hm.gvariant.mkString "/home/ripxorip/dev/ripxospeech/ripxospeech.py -a toggle_win_lang";
+      name = lib.hm.gvariant.mkString "Toggle windows lang";
+    };
+
   };
 
   gtk = { };
