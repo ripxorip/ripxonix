@@ -22,6 +22,7 @@
 
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
   services.envfs.enable = true;
+  services.printing.enable = true;
 
   # Hdd sleep udev rule:
   services.udev.extraRules = ''
