@@ -90,6 +90,19 @@
             username = "ripxorip";
           };
         };
+        "ripxorip@ripxowfh" = lib.homeManagerConfiguration {
+          modules = [
+            ./home-manager
+          ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs stateVersion darkmode;
+            desktop = "gnome";
+            hostname = "ripxowfh";
+            platform = "x86_64-linux";
+            username = "ripxorip";
+          };
+        };
         "ripxorip@ripxolab" = lib.homeManagerConfiguration {
           modules = [
             ./home-manager
@@ -191,6 +204,18 @@
             specialArgs = {
               inherit inputs outputs stateVersion;
               hostname = "ripxowork";
+              username = "ripxorip";
+              desktop = "gnome";
+            };
+          };
+          ripxowfh = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion;
+              hostname = "ripxowfh";
               username = "ripxorip";
               desktop = "gnome";
             };
