@@ -42,7 +42,5 @@ au BufRead,BufNewFile sconscript set filetype=python
 set diffopt+=iwhite
 set mouse=n
 set noswapfile
-set cmdheight=0
-
 
 ]], false)
