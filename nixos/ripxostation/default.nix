@@ -125,9 +125,51 @@
       device = "rootp/libvirt_images";
       fsType = "zfs";
     };
+  fileSystems."/mnt/smb_share" =
+    {
+      device = "rootp/smb_share";
+      fsType = "zfs";
+    };
 
   swapDevices =
     [{ device = "/dev/disk/by-uuid/ea121913-0867-416d-89ea-0243206ce592"; }];
+
+  services.samba = {
+    enable = true;
+    securityType = "user";
+    openFirewall = true;
+    extraConfig = ''
+          workgroup = WORKGROUP
+          server string = ripxonix
+          netbios name = ripxonix
+
+      #security = user
+      #use sendfile = yes
+      #max protocol = smb2
+      # note: localhost is the ipv6 localhost ::1
+      #hosts allow = 192.168.0. 127.0.0.1 localhost
+      #hosts deny = 0.0.0.0/0
+
+          guest account = ripxorip
+          map to guest = bad user
+    '';
+
+    shares = {
+      public = {
+        path = "/mnt/smb_share";
+        browseable = "yes";
+        "read only" = "no";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+      };
+    };
+  };
+
+  services.samba-wsdd = {
+    enable = true;
+    openFirewall = true;
+  };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
