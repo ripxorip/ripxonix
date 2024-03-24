@@ -15,7 +15,6 @@
       Description = "The Feed fencer";
     };
     serviceConfig = {
-      User = "ripxorip";
       Type = "oneshot";
       ExecStart = "${pkgs.feed_fencer}/bin/feed_fencer";
     };
