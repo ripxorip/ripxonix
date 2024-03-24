@@ -2,6 +2,7 @@
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
+    ../_mixins/services/feed_fencer.nix
   ];
 
   swapDevices = [{
@@ -22,6 +23,10 @@
     device = "/dev/disk/by-label/ESP";
     fsType = "vfat";
   };
+
+  environment.systemPackages = with pkgs; [
+      feed_fencer
+  ];
 
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "ohci_pci" "ehci_pci" "virtio_pci" "ahci" "usbhid" "sr_mod" "virtio_blk" ];
