@@ -280,6 +280,32 @@
               desktop = null;
             };
           };
+          ripxovm = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.users.ripxorip = {
+                  imports = [
+                    ./home-manager
+                  ];
+                };
+                home-manager.extraSpecialArgs = {
+                  inherit inputs outputs stateVersion darkmode;
+                  desktop = "gnome";
+                  hostname = "ripxovm";
+                  username = "ripxorip";
+                };
+              }
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion darkmode;
+              hostname = "ripxovm";
+              username = "ripxorip";
+              desktop = "gnome";
+            };
+          };
           # Build using: nix build .#nixosConfigurations.iso-desktop.config.system.build.isoImage 
           # Handy debug tip: nix eval .#nixosConfigurations.iso-desktop.config.isoImage.squashfsCompression
           iso-desktop = lib.nixosSystem {
