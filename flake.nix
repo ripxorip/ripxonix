@@ -284,6 +284,32 @@
               desktop = null;
             };
           };
+          feedfence = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.users.ripxorip = {
+                  imports = [
+                    ./home-manager
+                  ];
+                };
+                home-manager.extraSpecialArgs = {
+                  inherit inputs outputs stateVersion darkmode;
+                  desktop = "gnome";
+                  hostname = "feedfence";
+                  username = "ripxorip";
+                };
+              }
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion darkmode;
+              hostname = "feedfence";
+              username = "ripxorip";
+              desktop = "gnome";
+            };
+          };
           ripxovm = nixos-generators.nixosGenerate {
             system = "x86_64-linux";
             format = "qcow-efi";

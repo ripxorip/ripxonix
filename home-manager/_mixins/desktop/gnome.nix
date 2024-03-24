@@ -29,7 +29,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/keybindings" = {
-        toggle-overview = lib.hm.gvariant.mkArray type.string ["<Alt>space"] ;
+      toggle-overview = lib.hm.gvariant.mkArray type.string [ "<Alt>space" ];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
