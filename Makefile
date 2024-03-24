@@ -9,6 +9,14 @@ ifndef USER
  $(error User unknown)
 endif
 
+help:
+	@echo "Available targets:"
+	@echo "  home       - Switches the home-manager configuration. Use 'light' to override darkmode_flag."
+	@echo "  home_build - Builds and switches the home-manager configuration, then reboots the system."
+	@echo "  os         - Rebuilds the NixOS configuration."
+	@echo "  iso        - Builds an ISO image of the NixOS configuration."
+	@echo "  vm         - Builds a VM of the NixOS configuration."
+
 home:
 ifdef light
 	home-manager switch -b backup --flake ~/dev/ripxonix/#${USER}@${HOSTNAME} --override-input darkmode_flag github:boolean-option/false
@@ -27,3 +35,7 @@ home_build:
 	sudo reboot
 os:
 	sudo nixos-rebuild switch --flake ~/dev/ripxonix/#${HOSTNAME}
+iso:
+	nix build .#nixosConfigurations.iso-desktop.config.system.build.isoImage
+vm:
+	nix build .#nixosConfigurations.ripxovm

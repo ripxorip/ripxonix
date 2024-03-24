@@ -26,6 +26,9 @@
     talon-nix.url = "github:nix-community/talon-nix";
     talon-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixos-generators.url = "github:nix-community/nixos-generators";
+    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
+
     darkmode_flag.url = "github:boolean-option/true";
 
   };
@@ -39,6 +42,7 @@
     , talon-nix
     , waveforms
     , darkmode_flag
+    , nixos-generators
     , ...
     } @ inputs:
     let
@@ -280,7 +284,9 @@
               desktop = null;
             };
           };
-          ripxovm = lib.nixosSystem {
+          ripxovm = nixos-generators.nixosGenerate {
+            system = "x86_64-linux";
+            format = "qcow-efi";
             modules = [
               ./nixos
               agenix.nixosModules.age
