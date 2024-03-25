@@ -38,4 +38,4 @@ os:
 iso:
 	nix build .#nixosConfigurations.iso-desktop.config.system.build.isoImage
 vm:
-	nix build .#nixosConfigurations.ripxovm
+	nix build .#nixosConfigurations.ripxovm_qcow

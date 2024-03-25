@@ -12,17 +12,6 @@
   # In order for VSCode remote to work
   programs.nix-ld.enable = true;
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos";
-    autoResize = true;
-    fsType = "ext4";
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/ESP";
-    fsType = "vfat";
-  };
-
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "ohci_pci" "ehci_pci" "virtio_pci" "ahci" "usbhid" "sr_mod" "virtio_blk" ];
 
@@ -32,6 +21,7 @@
       systemd-boot.enable = true;
       systemd-boot.memtest86.enable = true;
     };
+
   };
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

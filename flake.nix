@@ -310,7 +310,33 @@
               desktop = "gnome";
             };
           };
-          ripxovm = nixos-generators.nixosGenerate {
+          ripxovm = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.users.ripxorip = {
+                  imports = [
+                    ./home-manager
+                  ];
+                };
+                home-manager.extraSpecialArgs = {
+                  inherit inputs outputs stateVersion darkmode;
+                  desktop = "gnome";
+                  hostname = "ripxovm";
+                  username = "ripxorip";
+                };
+              }
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion darkmode;
+              hostname = "ripxovm";
+              username = "ripxorip";
+              desktop = "gnome";
+            };
+          };
+          ripxovm_qcow = nixos-generators.nixosGenerate {
             system = "x86_64-linux";
             format = "qcow-efi";
             modules = [
