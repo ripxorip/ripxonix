@@ -336,6 +336,32 @@
               desktop = "gnome";
             };
           };
+          rtaudiogateway = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.users.ripxorip = {
+                  imports = [
+                    ./home-manager
+                  ];
+                };
+                home-manager.extraSpecialArgs = {
+                  inherit inputs outputs stateVersion darkmode;
+                  desktop = null;
+                  hostname = "rtaudiogateway";
+                  username = "ripxorip";
+                };
+              }
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion darkmode;
+              hostname = "rtaudiogateway";
+              username = "ripxorip";
+              desktop = null;
+            };
+          };
           ripxovm_qcow = nixos-generators.nixosGenerate {
             system = "x86_64-linux";
             format = "qcow-efi";
