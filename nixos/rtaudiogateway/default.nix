@@ -13,6 +13,9 @@
   # In order for VSCode remote to work
   programs.nix-ld.enable = true;
 
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+
   fileSystems."/" = {
     device = "/dev/disk/by-label/nixos";
     autoResize = true;
