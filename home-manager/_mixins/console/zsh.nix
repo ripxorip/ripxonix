@@ -67,7 +67,6 @@ in
       alias gsm="submodutil.py 5 | v -c 'set buftype=nofile'"
       alias gsd="git diff --submodule=diff | v -c 'set ft=diff' -c 'set buftype=nofile'"
 
-      alias sco="~/home/super_checkout.py"
       alias sst="~/home/super_status.py"
       alias scm="~/home/super_commit_msg.py"
       alias srv="~/home/super_git_review.py"
@@ -170,6 +169,12 @@ in
       mkdir -p ~/.history
       # Patch history to a shared directory
       HISTFILE=~/.history/.zsh_history
+
+      function sco() {
+        git checkout -f $1
+        make submodulesclean
+        git clean -xfdf
+      }
 
       # armcompiler6 gdb helper
       function axf_dbg()
