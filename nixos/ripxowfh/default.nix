@@ -35,4 +35,5 @@
   environment.systemPackages = with pkgs; [
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
+  services.logind.lidSwitchExternalPower = "ignore";
 }
