@@ -88,6 +88,7 @@
     zfs = {
       devNodes = "/dev/disk/by-partlabel";
       forceImportRoot = true;
+      extraPools = [ "zfsdata" ];
     };
   };
 
