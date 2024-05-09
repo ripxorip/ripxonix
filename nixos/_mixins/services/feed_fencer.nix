@@ -3,7 +3,7 @@
   systemd.timers.feed_fencer = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar="*-*-* *:*:00";
+      OnCalendar = "*-*-* *:*:00";
       Persistant = true;
       Unit = "feed_fencer.service";
     };

@@ -25,7 +25,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-      feed_fencer
+    feed_fencer
   ];
 
   boot = {

@@ -97,6 +97,11 @@
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
   services.envfs.enable = true;
 
+  # Hdd sleep udev rule:
+  services.udev.extraRules = ''
+    ACTION=="add|change", KERNEL=="sd[a-z]", ATTRS{queue/rotational}=="1", RUN+="${pkgs.hdparm}/bin/hdparm -S 120 /dev/%k"
+  '';
+
   fileSystems."/" =
     {
       device = "rootp/root";
