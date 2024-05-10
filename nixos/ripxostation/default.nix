@@ -6,6 +6,7 @@
     ../_mixins/services/syncthing.nix
     ../_mixins/services/flatpak.nix
     ../_mixins/services/pipewire.nix
+    ../_mixins/services/ripxobot.nix
     ../_mixins/virt
     ../_mixins/streaming
   ];
@@ -52,6 +53,11 @@
   services.xserver.displayManager.autoLogin.enable = true;
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
+
+  # Override the time of day to run the housekeeper
+  systemd.timers.ripxobot-housekeeper.timerConfig.OnCalendar = lib.mkForce "*-*-* 02:00:00";
+  # Enable once the housekeeper is stable
+  systemd.timers.ripxobot-housekeeper.enable = true;
 
   hardware.bluetooth.enable = true;
 
