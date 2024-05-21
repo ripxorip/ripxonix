@@ -12,18 +12,6 @@
 
   # I want to experiment using podman instead of docker for a while
   virtualisation = {
-    docker = {
-      enable = lib.mkForce false;
-    };
-    podman = {
-      enable = true;
-
-      # Create a `docker` alias for podman, to use it as a drop-in replacement
-      dockerCompat = true;
-
-      # Required for containers under podman-compose to be able to talk to each other.
-      defaultNetwork.settings.dns_enabled = true;
-    };
     # I want to explore using a genuine Win11 box as station server,
     # since the ovmf full was the issue this might be able to set as
     # standard now?
@@ -165,6 +153,10 @@
       };
     };
   };
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTR{idVendor}=="04da", ATTR{idProduct}=="10fa", MODE="0666", GROUP="adbusers"
+  '';
 
   services.samba-wsdd = {
     enable = true;
