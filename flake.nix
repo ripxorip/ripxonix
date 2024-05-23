@@ -284,6 +284,32 @@
               desktop = null;
             };
           };
+          ripxodroid = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.users.ripxorip = {
+                  imports = [
+                    ./home-manager
+                  ];
+                };
+                home-manager.extraSpecialArgs = {
+                  inherit inputs outputs stateVersion darkmode;
+                  desktop = null;
+                  hostname = "ripxodroid";
+                  username = "ripxorip";
+                };
+              }
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion darkmode;
+              hostname = "ripxodroid";
+              username = "ripxorip";
+              desktop = null;
+            };
+          };
           feedfence = lib.nixosSystem {
             modules = [
               ./nixos
