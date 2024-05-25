@@ -105,6 +105,7 @@
   services.nfs.server.exports = ''
     /mnt/nvme_zfsdata/byte_bunker 100.64.0.0/10(rw,nohide,no_root_squash,insecure,no_subtree_check)
     /mnt/zfsdata/storage/byte_vault 100.64.0.0/10(rw,nohide,no_root_squash,insecure,no_subtree_check)
+    /mnt/kodi 10.0.0.0/24(rw,nohide,no_root_squash,insecure,no_subtree_check)
   '';
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
