@@ -31,6 +31,12 @@
     };
   };
 
+  fileSystems."/mnt/nvr" =
+    {
+      device = "/dev/disk/by-uuid/fb93ec8f-2c8c-4504-aad8-7d0e9123e34c";
+      fsType = "ext4";
+    };
+
   # In order for VSCode remote to work
   programs.nix-ld.enable = true;
 
