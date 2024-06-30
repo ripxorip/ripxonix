@@ -21,7 +21,7 @@ stdenv.mkDerivation {
 
   # These dependencies are not needed, just to experiment with nix
   propagatedBuildInputs = [
-    (pkgs.python38.withPackages (pythonPackages: with pythonPackages; [
+    (pkgs.python3.withPackages (pythonPackages: with pythonPackages; [
       consul
       six
     ]))

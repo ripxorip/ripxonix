@@ -84,7 +84,7 @@ in
       catppuccin-nvim
       nvim-compe
       vim-fugitive
-      suda-vim
+      vim-suda
       nvim-autopairs
       vim-ripgrep
       github-nvim-theme
