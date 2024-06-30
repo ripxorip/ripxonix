@@ -42,6 +42,7 @@
   systemd.services."autovt@tty1".enable = false;
 
   hardware.bluetooth.enable = true;
+  hardware.rtl-sdr.enable = true;
 
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
@@ -179,6 +180,10 @@
     barrier
     prusa-slicer
     podman-compose
+    wine
+    reaper
+    yabridge
+    yabridgectl
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
