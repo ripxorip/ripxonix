@@ -20,7 +20,7 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    waveforms.url = "github:ripxorip/waveforms-flake";
+    waveforms.url = "github:liff/waveforms-flake";
     waveforms.inputs.nixpkgs.follows = "nixpkgs";
 
     talon-nix.url = "github:nix-community/talon-nix";
