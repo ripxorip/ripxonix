@@ -83,6 +83,9 @@
     prusa-slicer
     wireshark
     reaper
+    yabridge
+    yabridgectl
+    tuxguitar
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
 }
