@@ -24,6 +24,9 @@ require('config')
 
 require('gitsigns').setup()
 
+require('copilot').setup()
+require("CopilotChat").setup ()
+
 -- OR you can invoke them individually here
 -- require('config.colorscheme')  -- color scheme
 -- require('config.completion')   -- completion

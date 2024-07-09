@@ -76,9 +76,12 @@ in
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    withNodeJs = true;
 
     plugins = with pkgs.vimPlugins; [
       bolt
+      copilot-lua
+      CopilotChat-nvim
       nvim-lspconfig
       gitsigns-nvim
       catppuccin-nvim
@@ -88,10 +91,6 @@ in
       nvim-autopairs
       vim-ripgrep
       github-nvim-theme
-      # FIXME These shall be created by me
-      #vim-ripgrep
-      #ripxorip/aerojump
-      #ripxorip/utils
       editorconfig-vim
       neoformat
       lsp_signature-nvim

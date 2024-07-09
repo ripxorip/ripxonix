@@ -6,7 +6,7 @@ vim.o.completeopt = 'menuone,noselect'
 
 require'compe'.setup {
     enabled = true,
-    autocomplete = true,
+    autocomplete = false,
     debug = false,
     min_length = 1,
     preselect = 'enable',
@@ -78,6 +78,7 @@ utils.map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 ]]
 
 vim.api.nvim_exec([[
+inoremap <silent><expr> <C-Space> compe#complete()
 imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 ]], false)
