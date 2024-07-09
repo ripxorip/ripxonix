@@ -82,6 +82,7 @@ in
       bolt
       copilot-lua
       CopilotChat-nvim
+      ChatGPT-nvim
       nvim-lspconfig
       gitsigns-nvim
       catppuccin-nvim

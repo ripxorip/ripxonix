@@ -26,6 +26,9 @@ require('gitsigns').setup()
 
 require('copilot').setup()
 require("CopilotChat").setup ()
+require("chatgpt").setup({
+    api_key_cmd = "cat /home/ripxorip/.secret/openai"
+})
 
 -- OR you can invoke them individually here
 -- require('config.colorscheme')  -- color scheme
