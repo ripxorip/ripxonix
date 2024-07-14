@@ -169,6 +169,7 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
+  networking.interfaces.enp7s0.wakeOnLan.enable = true;
 
   programs.talon.enable = true;
   programs.adb.enable = true;
