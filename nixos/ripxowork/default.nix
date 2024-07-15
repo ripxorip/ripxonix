@@ -88,6 +88,9 @@
     yabridgectl
     wine
     tuxguitar
+    moonlight-qt
+    linuxPackages.usbip
+    wakeonlan
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
 }
