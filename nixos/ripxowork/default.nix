@@ -86,7 +86,8 @@
     reaper
     yabridge
     yabridgectl
-    wine
+    wineWowPackages.stable
+    winetricks
     tuxguitar
     moonlight-qt
     linuxPackages.usbip
