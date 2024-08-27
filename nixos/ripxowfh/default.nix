@@ -41,4 +41,9 @@
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
   services.logind.lidSwitchExternalPower = "ignore";
+
+  services.xserver.displayManager.startx.enable = true;
+  services.xrdp.enable = true;
+  services.xrdp.defaultWindowManager = "xfce4-session";
+  services.xrdp.openFirewall = true;
 }
