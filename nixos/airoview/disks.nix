@@ -28,6 +28,23 @@
           };
         };
       };
+      storage = {
+        device = "/dev/nvme1n1";
+        type = "disk";
+        content = {
+          type = "gpt";
+          partitions = {
+            storage = {
+              size = "100%";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/mnt/storage";
+              };
+            };
+          };
+        };
+      };
     };
   };
 }
