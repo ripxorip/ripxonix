@@ -257,6 +257,33 @@
               desktop = null;
             };
           };
+          ripxosurface = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.users.ripxorip = {
+                  imports = [
+                    ./home-manager
+                  ];
+                };
+                home-manager.extraSpecialArgs = {
+                  inherit inputs outputs stateVersion darkmode;
+                  desktop = null;
+                  hostname = "ripxosurface";
+                  username = "ripxorip";
+                  platform = "x86_64-linux";
+                };
+              }
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion;
+              hostname = "ripxosurface";
+              username = "ripxorip";
+              desktop = null;
+            };
+          };
           ripxolab = lib.nixosSystem {
             modules = [
               ./nixos
