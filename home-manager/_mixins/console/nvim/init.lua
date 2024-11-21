@@ -351,12 +351,9 @@ local check_back_space = function()
     end
 end
 
-
-vim.api.nvim_exec([[
-inoremap <silent><expr> <C-Space> compe#complete()
-imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-]], false)
+vim.api.nvim_set_keymap('i', '<C-Space>', 'compe#complete()', { noremap = true, silent = true, expr = true })
+vim.api.nvim_set_keymap('i', '<C-l>', "vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'", { noremap = true, expr = true })
+vim.api.nvim_set_keymap('s', '<C-l>', "vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'", { noremap = true, expr = true })
 
 
 -- ==========================================
