@@ -168,11 +168,8 @@ utils.map('n', '<leader>P', '"+P')
 utils.map('v', '<leader>p', '"+p')
 utils.map('v', '<leader>P', '"+P')
 
-utils.map('n', '<Leader>al', '<Plug>(AerojumpFromCursorBolt)')
-utils.map('n', '<Leader>as', '<Plug>(AerojumpSpace)')
-utils.map('n', '<Leader>aa', '<Plug>(AerojumpBolt)')
-utils.map('n', '<leader>al', '<Plug>(AerojumpShowLog)')
-utils.map('n', '<Leader><Space>', '<Plug>(AerojumpBolt)')
+-- Copilot Chat Commands
+utils.map('n', '<Leader>aa', ':CopilotChat <CR>')
 
 -- New ripgrep bindings
 utils.map('n', '<leader>re', ':Rg<CR>')
