@@ -189,6 +189,7 @@ utils.map('v', '\\', 'y:Rg "<C-R>""<CR>')
 utils.map('n', '\\', ':Rg<SPACE>')
 utils.map('n', '\\\\', ':Rg<CR>')
 
+utils.map('n', '<leader>vv', ':e ~/.config/nvim/init.lua<CR>', { noremap = true, silent = true })
 
 -- ==========================================
 -- ================ Colorscheme
