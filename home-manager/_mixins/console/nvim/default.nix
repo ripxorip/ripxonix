@@ -68,6 +68,8 @@ in
   };
 
   xdg.configFile."nvim/init.lua" = {
-    source = ./init.lua;
+    # source = ./init.lua;
+    # Absolute for now so I dont have to generate all the time during development
+    source = config.lib.file.mkOutOfStoreSymlink /home/ripxorip/dev/ripxonix/home-manager/_mixins/console/nvim/init.lua;
   };
 }
