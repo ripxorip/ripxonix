@@ -75,6 +75,16 @@ vim.opt.diffopt:append('iwhite')
 o.mouse = 'n'
 o.swapfile = false
 
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*",
+    command = "set formatoptions-=cro"
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*",
+    command = "setlocal formatoptions-=cro"
+})
+
 -- Convert autocmds to Lua
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
     pattern = {"sconstruct", "sconscript"},
@@ -387,20 +397,20 @@ remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap =
 -- ==========================================
 
 require'nvim-treesitter.configs'.setup {
-  -- ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = {},              -- list of language that will be disabled
-  },
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false -- Whether the query persists across vim sessions
-  },
-  rainbow = {
-    enable = true
-  }
+    -- ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    highlight = {
+        enable = true,              -- false will disable the whole extension
+        disable = {},              -- list of language that will be disabled
+    },
+    playground = {
+        enable = true,
+        disable = {},
+        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+        persist_queries = false -- Whether the query persists across vim sessions
+    },
+    rainbow = {
+        enable = true
+    }
 }
 
 
