@@ -1,7 +1,6 @@
 -- ==========================================
 -- ================ Utils
 -- ==========================================
-
 local utils = {}
 
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
@@ -67,20 +66,41 @@ o.ignorecase = true
 o.smartcase = true
 o.swapfile = false
 
--- wo.number = true
--- wo.relativenumber = true
 wo.cursorline = true
 wo.wrap = false
+o.number = true;
+o.relativenumber = true;
 
-vim.api.nvim_exec([[
-au BufRead,BufNewFile sconstruct set filetype=python
-au BufRead,BufNewFile sconscript set filetype=python
+vim.opt.diffopt:append('iwhite')
+o.mouse = 'n'
+o.swapfile = false
 
-set diffopt+=iwhite
-set mouse=n
-set noswapfile
+-- Convert autocmds to Lua
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    pattern = {"sconstruct", "sconscript"},
+    command = "set filetype=python"
+})
 
-]], false)
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "javascript",
+    command = "setlocal ts=2 sts=2 sw=2"
+})
+
+vim.api.nvim_create_autocmd({"FocusGained", "BufEnter", "CursorHold", "CursorHoldI"}, {
+    pattern = "*",
+    command = "if mode() != 'c' | checktime | endif"
+})
+
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+    pattern = "*",
+    command = [[echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None]]
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "vim_tc_input",
+    command = [[let g:compe = {} | let g:compe.enabled = v:false | call compe#setup(g:compe, 0)]]
+})
+
 
 
 -- ==========================================
@@ -105,19 +125,6 @@ function JumpNextClosedString()
     a.nvim_input("<Esc>la, ");
 end
 
-utils.map('i', '<C-o>', '<ESC>:lua CloseFcnCall() <CR>')
-utils.map('i', '<C-e>', '<ESC>:lua CloseFcnDeclaration() <CR>')
-utils.map('i', '<C-s>', '<ESC>:lua JumpNextClosedString() <CR>')
-utils.map('i', '<C-t>', '<ESC>:lua JumpNextClosed() <CR>')
-
-
---[[
-local buf = a.nvim_get_current_buf();
-local bl = a.nvim_buf_get_lines(buf, 0, -1, false);
-print(bl[3])
-bl[3] = "hello world";
-a.nvim_buf_set_lines(buf, 0, -1, false, bl);
-]]
 
 -- ==========================================
 -- ================ Key Mappings
@@ -149,47 +156,51 @@ utils.map('n', '<Leader>gdr', '<cmd>diffget //3<CR>')
 utils.map('n', '<Leader>gdl', '<cmd>diffget //2<CR>') 
 utils.map('n', '<leader>gdb', '<cmd>lua require("config.telescope").git_branches()<CR>')
 
-vim.api.nvim_exec([[
-nmap <Leader>dd :bp\|bd #<CR>
+-- Copy to clipboard
+utils.map('v', '<leader>y', '"+y')
+utils.map('n', '<leader>Y', '"+yg_')
+utils.map('n', '<leader>y', '"+y')
+utils.map('n', '<leader>yy', '"+yy')
 
-" " Copy to clipboard
-vnoremap  <leader>y  "+y
-nnoremap  <leader>Y  "+yg_
-nnoremap  <leader>y  "+y
-nnoremap  <leader>yy  "+yy
-" " Paste from clipboard
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>p "+p
-vnoremap <leader>P "+P
+-- Paste from clipboard
+utils.map('n', '<leader>p', '"+p')
+utils.map('n', '<leader>P', '"+P')
+utils.map('v', '<leader>p', '"+p')
+utils.map('v', '<leader>P', '"+P')
 
-nmap <Leader>al <Plug>(AerojumpFromCursorBolt)
-nmap <Leader>as <Plug>(AerojumpSpace)
-nmap <Leader>aa <Plug>(AerojumpBolt)
-nmap <leader>al <Plug>(AerojumpShowLog)
-nmap <Leader><Space> <Plug>(AerojumpBolt)
+utils.map('n', '<Leader>al', '<Plug>(AerojumpFromCursorBolt)')
+utils.map('n', '<Leader>as', '<Plug>(AerojumpSpace)')
+utils.map('n', '<Leader>aa', '<Plug>(AerojumpBolt)')
+utils.map('n', '<leader>al', '<Plug>(AerojumpShowLog)')
+utils.map('n', '<Leader><Space>', '<Plug>(AerojumpBolt)')
 
-" New ripgrep bindings
-nmap <leader>re :Rg
-nmap <leader>rr :Rg <CR> 
-nmap <leader>rc :Rgc <CR>
-nmap <leader>rs  :Rgi <CR>
+-- New ripgrep bindings
+utils.map('n', '<leader>re', ':Rg<CR>')
+utils.map('n', '<leader>rr', ':Rg <CR>')
+utils.map('n', '<leader>rc', ':Rgc <CR>')
+utils.map('n', '<leader>rs', ':Rgi <CR>')
 
-]], false)
+utils.map('i', '<C-o>', '<ESC>:lua CloseFcnCall() <CR>')
+utils.map('i', '<C-e>', '<ESC>:lua CloseFcnDeclaration() <CR>')
+utils.map('i', '<C-s>', '<ESC>:lua JumpNextClosedString() <CR>')
+utils.map('i', '<C-t>', '<ESC>:lua JumpNextClosed() <CR>')
+
+utils.map('i', '<C-t>', '<ESC>:lua JumpNextClosed() <CR>')
+
+utils.map('i', '<c-x><c-x>', '<plug>(fzf-complete-path)')
+utils.map('v', '\\', 'y:Rg "<C-R>""<CR>')
+utils.map('n', '\\', ':Rg<SPACE>')
+utils.map('n', '\\\\', ':Rg<CR>')
+
 
 -- ==========================================
 -- ================ Colorscheme
 -- ==========================================
 local cmd = vim.cmd
-
 utils.opt('o', 'termguicolors', true)
 utils.opt('o', 'background', 'dark')
--- cmd 'colorscheme onedark'
-
 vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-
 require("catppuccin").setup()
-
 vim.cmd [[colorscheme catppuccin]]
 
 -- ==========================================
@@ -197,11 +208,6 @@ vim.cmd [[colorscheme catppuccin]]
 -- ==========================================
 
 local on_attach = function(client, bufnr)
-
-    -- require('completion').on_attach()
-    -- require 'illuminate'.on_attach(client)
-    -- require 'lsp_signature'.on_attach(client)
-
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
@@ -262,8 +268,6 @@ end
 local nvim_lsp = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
--- require'snippets'.use_suggested_mappings(true) -- for snippets.vim
-
 -- Code actions
 capabilities.textDocument.codeAction = {
     -- dynamicRegistration = true
@@ -277,15 +281,6 @@ capabilities.textDocument.codeAction = {
             end)()
         }
     }
-    -- codeActionLiteralSupport = {
-    --     codeActionKind = {
-    --         valueSet = {
-    --             "", "quickfix", "refactor", "refactor.extract",
-    --             "refactor.inline", "refactor.rewrite", "source",
-    --             "source.organizeImports"
-    --         }
-    --     }
-    -- }
 }
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
@@ -306,33 +301,6 @@ require'lspconfig'.tsserver.setup{on_attach=on_attach}
 require'lspconfig'.pylsp.setup{on_attach=on_attach, cmd={"pylsp"}}
 require'lspconfig'.rust_analyzer.setup{on_attach=on_attach}
 
--- require'lspinstall'.setup()
--- local servers = require'lspinstall'.installed_servers()
---[[
-local servers = {"ccls"}
-for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {
-        capabilities = capabilities,
-        on_attach = on_attach
-        -- init_options = {
-        --     onlyAnalyzeProjectsWithOpenFiles = true,
-        --     suggestFromUnimportedLibraries = false,
-        --     closingLabels = true,
-        -- };
-    }
-end
-]]
-
--- Lua LSP. NOTE: This replaces the calls where you would have before done `require('nvim_lsp').sumneko_lua.setup()`
--- require('nlua.lsp.nvim').setup(require('lspconfig'), {
---     capabilities = capabilities,
---     on_attach = on_attach
-    -- init_options = {
-    --     onlyAnalyzeProjectsWithOpenFiles = true,
-    --     suggestFromUnimportedLibraries = false,
-    --     closingLabels = true
-    -- }
--- })
 
 -- ==========================================
 -- ================ Compe
@@ -383,36 +351,6 @@ local check_back_space = function()
     end
 end
 
--- Use (s-)tab to:
---- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
---[[
-_G.tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
-        return t "<C-n>"
-    elseif vim.fn.call("vsnip#available", {1}) == 1 then
-        return t "<Plug>(vsnip-expand-or-jump)"
-    elseif check_back_space() then
-        return t "<Tab>"
-    else
-        return vim.fn['compe#complete']()
-    end
-end
-_G.s_tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
-        return t "<C-p>"
-    elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-        return t "<Plug>(vsnip-jump-prev)"
-    else
-        return t "<S-Tab>"
-    end
-end
-
-utils.map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-utils.map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-utils.map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-utils.map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-]]
 
 vim.api.nvim_exec([[
 inoremap <silent><expr> <C-Space> compe#complete()
@@ -458,7 +396,6 @@ end
 
 
 remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
-
 
 
 -- ==========================================
