@@ -170,6 +170,10 @@ utils.map('v', '<leader>P', '"+P')
 
 -- Copilot Chat Commands
 utils.map('n', '<Leader>aa', ':CopilotChat <CR>')
+utils.map('n', '<Leader>at', ':CopilotChatToggle <CR>')
+utils.map('n', '<Leader>ae', ':CopilotChatExplain <CR>')
+utils.map('n', '<Leader>ar', ':CopilotChatReview <CR>')
+utils.map('n', '<Leader>af', ':CopilotChatFix <CR>')
 
 -- New ripgrep bindings
 utils.map('n', '<leader>re', ':Rg<CR>')
