@@ -72,7 +72,7 @@ o.number = true;
 o.relativenumber = true;
 
 vim.opt.diffopt:append('iwhite')
-o.mouse = 'n'
+o.mouse = 'a'
 o.swapfile = false
 
 vim.api.nvim_create_autocmd("BufEnter", {
