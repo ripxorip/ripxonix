@@ -45,7 +45,6 @@ in
       nvim-lspconfig
       gitsigns-nvim
       catppuccin-nvim
-      nvim-compe
       vim-fugitive
       vim-suda
       nvim-autopairs
@@ -60,10 +59,22 @@ in
       fzf-vim
       vim-tmux-navigator
       vim-unimpaired
+
+      friendly-snippets
+      cmp-nvim-lsp
+      cmp-buffer
+      cmp-path
+      cmp-cmdline
+      nvim-cmp
+      luasnip
+      cmp_luasnip
+      copilot-cmp
+
     ];
 
     extraPackages = with pkgs; [
       tree-sitter
+      ccls
     ];
   };
 
