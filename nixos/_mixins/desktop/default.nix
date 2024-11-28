@@ -30,6 +30,7 @@
     vlc
     kitty
     spotify
+    feishin
   ];
 
 }
