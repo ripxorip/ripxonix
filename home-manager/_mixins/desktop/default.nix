@@ -30,7 +30,7 @@ in
   programs = {
     kitty = {
       enable = true;
-      theme = kitty_theme;
+      themeFile = kitty_theme;
 
       settings = {
         font_family = kitty_theme_font;
