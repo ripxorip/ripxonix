@@ -20,6 +20,9 @@
   boot.kernelModules = [ "kvm-intel" "usbmon" ];
   boot.extraModulePackages = [ ];
 
+  # TODO 02/12 - 2024 Remove after some updates, this messes with GTK for now
+  hardware.nvidia.package = lib.mkForce config.boot.kernelPackages.nvidiaPackages.beta;
+
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
   services.envfs.enable = true;
   services.printing.enable = true;
