@@ -274,7 +274,7 @@ nvim_lsp.ccls.setup{
     on_attach = on_attach
 }
 
-require'lspconfig'.tsserver.setup{on_attach=on_attach}
+require'lspconfig'.ts_ls.setup{on_attach=on_attach}
 require'lspconfig'.pylsp.setup{on_attach=on_attach, cmd={"pylsp"}}
 require'lspconfig'.rust_analyzer.setup{on_attach=on_attach}
 
