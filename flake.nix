@@ -176,7 +176,7 @@
                 };
                 home-manager.extraSpecialArgs = {
                   inherit inputs outputs stateVersion darkmode;
-                  desktop = "gnome";
+                  desktop = "plasma";
                   hostname = "ripxowork";
                   username = "ripxorip";
                   platform = "x86_64-linux";
@@ -187,7 +187,7 @@
               inherit inputs outputs stateVersion;
               hostname = "ripxowork";
               username = "ripxorip";
-              desktop = "gnome";
+              desktop = "plasma";
             };
           };
           ripxowfh = lib.nixosSystem {
