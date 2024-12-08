@@ -114,12 +114,14 @@
     teams-for-linux
     yabridge
     yabridgectl
-    wineWowPackages.stable
+    wineWowPackages.unstable
     winetricks
     tuxguitar
     moonlight-qt
     linuxPackages.usbip
     wakeonlan
+    distrobox
+    samba
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
 }
