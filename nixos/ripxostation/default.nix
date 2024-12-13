@@ -168,6 +168,16 @@
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
   networking.interfaces.enp7s0.wakeOnLan.enable = true;
 
+  networking.bridges.br0.interfaces = [ "enp7s0" ];
+  networking.interfaces.br0 = {
+    useDHCP = false;
+    ipv4.addresses = [{
+      "address" = "10.0.0.230";
+      "prefixLength" = 24;
+    }];
+  };
+
+
   programs.talon.enable = true;
   programs.adb.enable = true;
 
