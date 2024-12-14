@@ -359,7 +359,7 @@
                 };
                 home-manager.extraSpecialArgs = {
                   inherit inputs outputs stateVersion darkmode;
-                  desktop = plasma;
+                  desktop = "plasma";
                   hostname = "ripxodroid";
                   username = "ripxorip";
                 };
@@ -369,7 +369,7 @@
               inherit inputs outputs stateVersion darkmode;
               hostname = "ripxodroid";
               username = "ripxorip";
-              desktop = plasma;
+              desktop = "plasma";
             };
           };
           feedfence = lib.nixosSystem {
