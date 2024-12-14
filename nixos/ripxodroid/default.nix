@@ -55,6 +55,11 @@
     moonlight-qt
   ];
 
+  fileSystems."/mnt/kodi" = {
+    device = "10.0.0.175:/mnt/kodi";
+    fsType = "nfs";
+  };
+
   # FIXME Setup properly for the odroid
   # hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
