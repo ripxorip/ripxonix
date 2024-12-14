@@ -126,7 +126,7 @@
       nixosConfigurations =
         let
           iso_params = {
-            services.xserver.displayManager.autoLogin.user = lib.mkForce "ripxorip";
+            services.displayManager.autoLogin.user = lib.mkForce "ripxorip";
             isoImage.squashfsCompression = "gzip -Xcompression-level 1";
           };
         in
