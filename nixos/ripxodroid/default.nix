@@ -46,9 +46,13 @@
   networking.useDHCP = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "ripxorip";
+  services.displayManager.defaultSession = "plasma";
+  services.displayManager.sddm.wayland.enable = true;
 
   environment.systemPackages = with pkgs; [
-      moonlight-qt
+    moonlight-qt
   ];
 
   # FIXME Setup properly for the odroid
