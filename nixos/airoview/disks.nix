@@ -2,17 +2,15 @@
 {
   disko.devices = {
     disk = {
-      nvme0 = {
+      nvme = {
+        device = "/dev/nvme0n1";
         type = "disk";
-        device = builtins.elemAt disks 0;
         content = {
           type = "gpt";
           partitions = {
             ESP = {
-              start = "0%";
-              end = "1024MiB";
               type = "EF00";
-              priority = 1;
+              size = "500M";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -20,14 +18,28 @@
               };
             };
             root = {
-              start = "1024MiB";
-              end = "100%";
-              priority = 2;
+              size = "100%";
               content = {
                 type = "filesystem";
-                # Overwirte the existing filesystem
                 format = "ext4";
                 mountpoint = "/";
+              };
+            };
+          };
+        };
+      };
+      storage = {
+        device = "/dev/nvme1n1";
+        type = "disk";
+        content = {
+          type = "gpt";
+          partitions = {
+            storage = {
+              size = "100%";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/mnt/storage";
               };
             };
           };

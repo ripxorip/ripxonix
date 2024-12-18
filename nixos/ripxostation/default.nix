@@ -36,8 +36,8 @@
   };
 
   # Auto login
-  services.xserver.displayManager.autoLogin.user = "ripxorip";
-  services.xserver.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "ripxorip";
+  services.displayManager.autoLogin.enable = true;
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
@@ -64,7 +64,6 @@
         "vfio_pci"
         "vfio"
         "vfio_iommu_type1"
-        "vfio_virqfd"
         "zfs"
       ];
 
@@ -125,28 +124,19 @@
 
   services.samba = {
     enable = true;
-    securityType = "user";
     openFirewall = true;
-    extraConfig = ''
-          workgroup = WORKGROUP
-          server string = ripxonix
-          netbios name = ripxonix
-
-      #security = user
-      #use sendfile = yes
-      #max protocol = smb2
-      # note: localhost is the ipv6 localhost ::1
-      #hosts allow = 192.168.0. 127.0.0.1 localhost
-      #hosts deny = 0.0.0.0/0
-
-          guest account = ripxorip
-          map to guest = bad user
-    '';
-
-    shares = {
-      public = {
-        path = "/mnt/smb_share";
-        browseable = "yes";
+    settings = {
+      global = {
+        "workgroup" = "WORKGROUP";
+        "server string" = "ripxonix";
+        "netbios name" = "ripxonix";
+        "guest account" = "ripxorip";
+        "map to guest" = "bad user";
+        "security" = "user";
+      };
+      "public" = {
+        "path" = "/mnt/smb_share";
+        "browseable" = "yes";
         "read only" = "no";
         "guest ok" = "yes";
         "create mask" = "0644";
@@ -164,12 +154,30 @@
     openFirewall = true;
   };
 
+  fileSystems."/mnt/nvr" =
+    {
+      device = "/dev/disk/by-uuid/fb93ec8f-2c8c-4504-aad8-7d0e9123e34c";
+      fsType = "ext4";
+    };
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
+  networking.interfaces.enp7s0.wakeOnLan.enable = true;
+
+  networking.bridges.br0.interfaces = [ "enp7s0" ];
+  networking.interfaces.br0 = {
+    useDHCP = false;
+    ipv4.addresses = [{
+      "address" = "10.0.0.230";
+      "prefixLength" = 24;
+    }];
+  };
+  networking.defaultGateway = "10.0.0.1";
+  networking.nameservers = [ "10.0.0.1" ];
 
   programs.talon.enable = true;
   programs.adb.enable = true;
@@ -184,6 +192,7 @@
     reaper
     yabridge
     yabridgectl
+    linuxPackages.usbip
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

@@ -31,12 +31,6 @@
     };
   };
 
-  fileSystems."/mnt/nvr" =
-    {
-      device = "/dev/disk/by-uuid/fb93ec8f-2c8c-4504-aad8-7d0e9123e34c";
-      fsType = "ext4";
-    };
-
   # In order for VSCode remote to work
   programs.nix-ld.enable = true;
 
@@ -49,20 +43,23 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  networking.useDHCP = false;
-  networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
-
-  networking.bridges.br0.interfaces = [ "enp1s0" ];
-  networking.interfaces.br0 = {
-    useDHCP = false;
-    ipv4.addresses = [{
-      "address" = "10.0.0.212";
-      "prefixLength" = 24;
-    }];
-  };
-
+  networking.useDHCP = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "ripxorip";
+  services.displayManager.defaultSession = "plasma";
+  services.displayManager.sddm.wayland.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    moonlight-qt
+  ];
+
+  fileSystems."/mnt/kodi" = {
+    device = "10.0.0.175:/mnt/kodi";
+    fsType = "nfs";
+  };
+
   # FIXME Setup properly for the odroid
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  # hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

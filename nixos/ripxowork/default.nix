@@ -23,6 +23,7 @@
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
   services.envfs.enable = true;
   services.printing.enable = true;
+  services.fwupd.enable = true;
 
   # Hdd sleep udev rule:
   services.udev.extraRules = ''
@@ -75,14 +76,52 @@
   programs.talon.enable = true;
   programs.adb.enable = true;
 
+  # PXE Boot example for the Pi
+  #  services.dnsmasq.enable = true;
+  #  services.dnsmasq.resolveLocalQueries = false;
+  #
+  #  services.dnsmasq.settings = {
+  #    interface = "enp0s13f0u3"; # Specify the interface
+  #    bind-interfaces = true; # Bind even if the interface is down
+  #    enable-tftp = true; # Enable TFTP
+  #    tftp-root = "/pxe/tftp"; # TFTP directory
+  #    dhcp-range = "192.168.144.100,192.168.144.120,12h";
+  #    dhcp-boot = "bootcode.bin"; # PXE boot file
+  #    pxe-service="0,\"Raspberry Pi Boot\"";
+  #  };
+  #
+  #  networking.interfaces.enp0s13f0u3 = {
+  #    useDHCP = false; # No DHCP for this interface
+  #    ipv4.addresses = [{
+  #      address = "192.168.144.1";
+  #      prefixLength = 24;
+  #    }];
+  #  };
+  #
+  #  services.nfs.server.enable = true;
+  #  services.nfs.server.exports = ''
+  #    /pxe/rootfs *(rw,sync,no_subtree_check,no_root_squash)
+  #    /pxe/tftp *(rw,sync,no_subtree_check,no_root_squash)
+  #  '';
+
   environment.systemPackages = with pkgs; [
-    gomuks
     obs-studio
     remmina
     kicad
     prusa-slicer
     wireshark
     reaper
+    teams-for-linux
+    yabridge
+    yabridgectl
+    wineWowPackages.unstable
+    winetricks
+    tuxguitar
+    moonlight-qt
+    linuxPackages.usbip
+    wakeonlan
+    distrobox
+    samba
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
 }

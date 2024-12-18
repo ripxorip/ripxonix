@@ -28,47 +28,6 @@ let
     };
   };
 
-  colorscheme_darkmode = ''
-    local utils = require('utils')
-    local cmd = vim.cmd
-
-    utils.opt('o', 'termguicolors', true)
-    utils.opt('o', 'background', 'dark')
-    -- cmd 'colorscheme onedark'
-
-    vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-
-    require("catppuccin").setup()
-
-    vim.cmd [[colorscheme catppuccin]]
-  '';
-
-  colorscheme_light_mode = ''
-    local utils = require('utils')
-    local cmd = vim.cmd
-
-    --utils.opt('o', 'termguicolors', true)
-    --utils.opt('o', 'background', 'dark')
-    -- cmd 'colorscheme onedark'
-
-    -- vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-
-    require("catppuccin").setup()
-
-    require('github-theme').setup({
-        options = {
-            hide_nc_statusline = false,
-
-        },
-    })
-
-    vim.cmd [[colorscheme github_light]]
-    vim.cmd ('set laststatus=0')
-    -- vim.cmd('colorscheme github_light')
-  '';
-
-  nvim_colorscheme = if darkmode then colorscheme_darkmode else colorscheme_light_mode;
-
 in
 {
   programs.neovim = {
@@ -76,22 +35,21 @@ in
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    withNodeJs = true;
 
     plugins = with pkgs.vimPlugins; [
       bolt
+      copilot-lua
+      CopilotChat-nvim
+      ChatGPT-nvim
       nvim-lspconfig
       gitsigns-nvim
       catppuccin-nvim
-      nvim-compe
       vim-fugitive
-      suda-vim
+      vim-suda
       nvim-autopairs
       vim-ripgrep
       github-nvim-theme
-      # FIXME These shall be created by me
-      #vim-ripgrep
-      #ripxorip/aerojump
-      #ripxorip/utils
       editorconfig-vim
       neoformat
       lsp_signature-nvim
@@ -101,28 +59,28 @@ in
       fzf-vim
       vim-tmux-navigator
       vim-unimpaired
+
+      friendly-snippets
+      cmp-nvim-lsp
+      cmp-buffer
+      cmp-path
+      cmp-cmdline
+      nvim-cmp
+      luasnip
+      cmp_luasnip
+      copilot-cmp
+
     ];
 
     extraPackages = with pkgs; [
       tree-sitter
+      ccls
     ];
-
-    extraConfig = ''
-      :luafile ~/.config/nvim/lua/init.lua
-    '';
   };
 
-
-  home = {
-    file = {
-      "${config.xdg.configHome}/nvim/lua/config/colorscheme.lua".text = "${nvim_colorscheme}";
-    };
-  };
-
-  # FIXME Continue here, by generating the colorscheme.lua file according to the darkmode variable
-  # It shall be written and probably be removed from the local .config folder
-  xdg.configFile.nvim = {
-    source = ./config;
-    recursive = true;
+  xdg.configFile."nvim/init.lua" = {
+    # source = ./init.lua;
+    # Absolute for now so I dont have to generate all the time during development
+    source = config.lib.file.mkOutOfStoreSymlink /home/ripxorip/dev/ripxonix/home-manager/_mixins/console/nvim/init.lua;
   };
 }
