@@ -37,8 +37,8 @@
     };
   };
   # Auto login
-  services.xserver.displayManager.autoLogin.user = "ripxorip";
-  services.xserver.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "ripxorip";
+  services.displayManager.autoLogin.enable = true;
 
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
@@ -65,7 +65,7 @@
   # Enable once the housekeeper is stable
   systemd.timers.ripxobot-housekeeper.enable = true;
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       vaapiVdpau
