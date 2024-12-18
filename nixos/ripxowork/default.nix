@@ -17,7 +17,7 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "usbmon" ];
+  boot.kernelModules = [ "kvm-intel" "usbmon" "vhci-hcd" "usbip_host" ];
   boot.extraModulePackages = [ ];
 
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
@@ -29,6 +29,15 @@
   services.udev.extraRules = ''
     SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
   '';
+
+systemd.services.usbipd = {
+    description = "USB/IP daemon";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.linuxPackages.usbip}/bin/usbipd";
+      Restart = "always";
+    };
+};
 
   fileSystems."/" =
     {
