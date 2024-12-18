@@ -68,19 +68,6 @@
 
       # The home-manager configurations (e.g): home-manager switch --flake ~/dev/ripxonix/#ripxorip@ripxowork
       homeConfigurations = {
-        "ripxorip@ripxolab" = lib.homeManagerConfiguration {
-          modules = [
-            ./home-manager
-          ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion darkmode;
-            desktop = "gnome";
-            hostname = "ripxolab";
-            platform = "x86_64-linux";
-            username = "ripxorip";
-          };
-        };
         "ripxorip@vm" = lib.homeManagerConfiguration {
           modules = [
             ./home-manager
@@ -275,6 +262,21 @@
             modules = [
               ./nixos
               agenix.nixosModules.age
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.users.ripxorip = {
+                  imports = [
+                    ./home-manager
+                  ];
+                };
+                home-manager.extraSpecialArgs = {
+                  inherit inputs outputs stateVersion darkmode;
+                  desktop = "gnome";
+                  hostname = "ripxolab";
+                  username = "ripxorip";
+                  platform = "x86_64-linux";
+                };
+              }
             ];
             specialArgs = {
               inherit inputs outputs stateVersion;
