@@ -8,4 +8,5 @@
   ripxobot = pkgs.callPackage ./ripxobot { };
   syncoid = pkgs.callPackage ./syncoid { };
   feed_fencer = pkgs.callPackage ./feed_fencer { };
+  usbip_plugger = pkgs.callPackage ./usbip_plugger { };
 }

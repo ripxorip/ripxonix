@@ -30,6 +30,7 @@
     kitty
     spotify
     feishin
+    usbip_plugger
   ];
 
 }
