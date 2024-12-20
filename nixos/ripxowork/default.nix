@@ -30,14 +30,14 @@
     SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
   '';
 
-systemd.services.usbipd = {
+  systemd.services.usbipd = {
     description = "USB/IP daemon";
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       ExecStart = "${pkgs.linuxPackages.usbip}/bin/usbipd";
       Restart = "always";
     };
-};
+  };
 
   fileSystems."/" =
     {

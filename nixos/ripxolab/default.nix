@@ -108,12 +108,19 @@
     /mnt/kodi 10.0.0.0/24(rw,nohide,no_root_squash,insecure,no_subtree_check)
   '';
 
-  networking.useDHCP = false;
-  networking.interfaces.enp7s0.useDHCP = lib.mkDefault true;
+  networking.useDHCP = lib.mkForce false;
+  networking.defaultGateway = "10.0.0.1";
+  networking.nameservers = [ "10.0.0.1" ];
+
+  networking.interfaces.enp7s0 = {
+    ipv4.addresses = [{
+      "address" = "10.0.0.175";
+      "prefixLength" = 24;
+    }];
+  };
 
   networking.bridges.br0.interfaces = [ "enp1s0f0" ];
   networking.interfaces.br0 = {
-    useDHCP = false;
     ipv4.addresses = [{
       "address" = "10.0.0.112";
       "prefixLength" = 24;

@@ -47,7 +47,7 @@
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
 
-    kernelModules = [ "kvm-amd" "usbip_core" "vhci_hcd"];
+    kernelModules = [ "kvm-amd" "usbip_core" "vhci_hcd" ];
 
     loader = {
       efi.canTouchEfiVariables = true;
