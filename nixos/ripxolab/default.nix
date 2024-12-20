@@ -6,7 +6,6 @@
     ../_mixins/services/tailscale.nix
     ../_mixins/services/syncthing.nix
     ../_mixins/services/jellyfin.nix
-    ../_mixins/services/flatpak.nix
     ../_mixins/services/pipewire.nix
     ../_mixins/services/sanoid.nix
     ../_mixins/services/ripxobot.nix
@@ -75,6 +74,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.memtest86.enable = true;
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
