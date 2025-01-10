@@ -4,7 +4,6 @@
   imports = [
     ../_mixins/services/tailscale.nix
     ../_mixins/services/syncthing.nix
-    ../_mixins/services/flatpak.nix
     ../_mixins/services/pipewire.nix
     ../_mixins/virt
     ../_mixins/streaming
