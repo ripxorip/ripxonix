@@ -18,7 +18,10 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "usbmon" "vhci-hcd" "usbip_host" ];
-  boot.extraModulePackages = [ ];
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    rtl8814au
+  ];
 
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
   services.envfs.enable = true;
