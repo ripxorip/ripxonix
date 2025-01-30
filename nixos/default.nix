@@ -75,6 +75,9 @@
       allowUnfree = true;
       # Accept the joypixels license
       joypixels.acceptLicense = true;
+      permittedInsecurePackages = [
+          "electron-31.7.7"
+      ];
     };
   };
 
