@@ -116,7 +116,10 @@
   #    /pxe/tftp *(rw,sync,no_subtree_check,no_root_squash)
   #  '';
 
+  hardware.spacenavd.enable = true;
+
   environment.systemPackages = with pkgs; [
+    freecad-wayland
     obs-studio
     remmina
     kicad
