@@ -118,6 +118,8 @@
 
   hardware.spacenavd.enable = true;
 
+  musnix.enable = true;
+
   environment.systemPackages = with pkgs; [
     freecad-wayland
     obs-studio

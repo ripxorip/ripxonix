@@ -31,6 +31,8 @@
 
     darkmode_flag.url = "github:boolean-option/true";
 
+    musnix  = { url = "github:musnix/musnix"; };
+
   };
   outputs =
     { self
@@ -155,6 +157,7 @@
               waveforms.nixosModule
               talon-nix.nixosModules.talon
               home-manager.nixosModules.home-manager
+              inputs.musnix.nixosModules.musnix
               {
                 home-manager.users.ripxorip = {
                   imports = [
