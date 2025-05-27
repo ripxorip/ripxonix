@@ -93,6 +93,12 @@
       fsType = "vfat";
     };
 
+  fileSystems."/mnt/nvr" =
+    {
+      device = "/dev/disk/by-uuid/fb93ec8f-2c8c-4504-aad8-7d0e9123e34c";
+      fsType = "ext4";
+    };
+
   swapDevices =
     [{ device = "/dev/disk/by-uuid/7cd59f45-ac9f-4c8f-87df-fbaa809bc1d3"; }];
 
