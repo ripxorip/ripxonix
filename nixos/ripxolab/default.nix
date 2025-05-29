@@ -114,6 +114,34 @@
     /mnt/kodi 10.0.0.0/24(rw,nohide,no_root_squash,insecure,no_subtree_check)
   '';
 
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      global = {
+        "workgroup" = "WORKGROUP";
+        "server string" = "ripxonix";
+        "netbios name" = "ripxonix";
+        "guest account" = "ripxorip";
+        "map to guest" = "bad user";
+        "security" = "user";
+      };
+      "public" = {
+        "path" = "/mnt/nvme_zfsdata/fast_storage/smb_share";
+        "browseable" = "yes";
+        "read only" = "no";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+      };
+    };
+  };
+
+  services.samba-wsdd = {
+    enable = true;
+    openFirewall = true;
+  };
+
   networking.useDHCP = lib.mkForce false;
   networking.defaultGateway = "10.0.0.1";
   networking.nameservers = [ "10.0.0.1" ];
