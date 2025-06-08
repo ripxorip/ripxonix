@@ -45,7 +45,7 @@ in
         "last-working-dir"
       ];
     };
-    initExtra = ''
+    initContent = ''
       export PATH=~/tools:~/dev/workspace/tools:/home/ripxorip/dev/ptools:/home/ripxorip/dev/tools:~/.local/bin:$PATH:~/.cargo/bin
       alias ws="cd ~/dev/workspace"
       alias c="cd"
