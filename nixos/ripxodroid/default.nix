@@ -37,10 +37,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"  ];
   boot.initrd.kernelModules = [ ];
 
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-intel" "usbmon" "vhci-hcd" "usbip_host" ];
   boot.extraModulePackages = [ ];
 
   networking.useDHCP = lib.mkDefault true;
@@ -51,9 +51,31 @@
   services.displayManager.defaultSession = "plasma";
   services.displayManager.sddm.wayland.enable = true;
 
+  systemd.services.usbipd = {
+    description = "USB/IP daemon";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.linuxPackages.usbip}/bin/usbipd";
+      Restart = "always";
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     moonlight-qt
+    linuxPackages.usbip
   ];
+
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
+  };
+
+  hardware.bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+  };
 
   fileSystems."/mnt/kodi" = {
     device = "10.0.0.175:/mnt/kodi";
