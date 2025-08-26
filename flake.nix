@@ -154,7 +154,7 @@
               ./nixos
               agenix.nixosModules.age
               nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
-              waveforms.nixosModule
+              # waveforms.nixosModule # Broken for now.. Will be healed in the future hopefully..
               talon-nix.nixosModules.talon
               home-manager.nixosModules.home-manager
               inputs.musnix.nixosModules.musnix
