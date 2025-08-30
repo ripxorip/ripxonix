@@ -20,7 +20,7 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    waveforms.url = "github:liff/waveforms-flake";
+    waveforms.url = "github:ripxorip/waveforms-flake";
     waveforms.inputs.nixpkgs.follows = "nixpkgs";
 
     talon-nix.url = "github:nix-community/talon-nix";
@@ -154,7 +154,7 @@
               ./nixos
               agenix.nixosModules.age
               nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
-              # waveforms.nixosModule # Broken for now.. Will be healed in the future hopefully..
+              waveforms.nixosModule
               talon-nix.nixosModules.talon
               home-manager.nixosModules.home-manager
               inputs.musnix.nixosModules.musnix

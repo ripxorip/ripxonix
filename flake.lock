@@ -374,15 +374,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1755083353,
-        "narHash": "sha256-wuiCs2kab1525NRGCQaQyDpp8AFVrNkDshKTiqkHqrE=",
-        "owner": "liff",
+        "lastModified": 1756576041,
+        "narHash": "sha256-/Ol7ivNC2UetGkOIB+MEP2CFTemjmndkIMwEBIjp2E8=",
+        "owner": "ripxorip",
         "repo": "waveforms-flake",
-        "rev": "065776a6f1dcdaaac65e2adfc4abf8fe87332775",
+        "rev": "6a7ec2ba91e072eb1116b86d94751aef46535d6e",
         "type": "github"
       },
       "original": {
-        "owner": "liff",
+        "owner": "ripxorip",
         "repo": "waveforms-flake",
         "type": "github"
       }

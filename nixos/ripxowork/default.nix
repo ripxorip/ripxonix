@@ -33,6 +33,34 @@
     SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
   '';
 
+## Some black magic to get a custom resolution with a custom EDID...
+  boot = {
+    kernelParams = [ 
+      "video=DP-6:2560x1440@100" 
+    ];
+    # Create custom EDID file in the firmware directory
+    extraModprobeConfig = ''
+      options drm edid_firmware=DP-6:edid/2560x1440.bin
+    '';
+  };
+
+  # Add the EDID file to the system
+  hardware.firmware = [
+    (pkgs.runCommand "edid-2560x1440" {} ''
+      mkdir -p $out/lib/firmware/edid
+      echo -ne '\x00\xff\xff\xff\xff\xff\xff\x00\x1e\x6d\x01\x00\x01\x01\x01\x01\x01\x1c\x01\x04\xb5\x3c\x22\x78\x9e\x3e\x31\xa7\x54\x4c\x99\x26\x0f\x50\x54\x21\x08\x00\x71\x40\x81\x80\x81\xc0\xa9\xc0\xd1\xc0\x81\x00\x01\x01\x01\x01\x4d\xd0\x00\xa0\xf0\x70\x3e\x80\x30\x20\x35\x00\x55\x50\x21\x00\x00\x1a\x00\x00\x00\xfd\x00\x18\x64\x1e\xa0\x3c\x01\x0a\x20\x20\x20\x20\x20\x20\x00\x00\x00\xfc\x00\x44\x55\x4d\x4d\x59\x20\x31\x34\x34\x30\x70\x0a\x20\x00\x00\x00\xff\x00\x53\x65\x72\x69\x61\x6c\x0a\x20\x20\x20\x20\x20\x20\x01\x8c' > $out/lib/firmware/edid/2560x1440.bin
+    '')
+  ];
+
+
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
+
+
   systemd.services.usbipd = {
     description = "USB/IP daemon";
     wantedBy = [ "multi-user.target" ];
