@@ -15,12 +15,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" "v4l2loopback" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "usbmon" "vhci-hcd" "usbip_host" ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
     rtl8814au
+    v4l2loopback
   ];
 
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
@@ -41,6 +42,7 @@
     # Create custom EDID file in the firmware directory
     extraModprobeConfig = ''
       options drm edid_firmware=DP-6:edid/2560x1440.bin
+      options v4l2loopback devices=1 video_nr=10 card_label=PhilipBrioStream exclusive_caps=1
     '';
   };
 
