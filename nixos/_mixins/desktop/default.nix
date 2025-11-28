@@ -31,6 +31,7 @@
     spotify
     feishin
     usbip_plugger
+    logseq
   ];
 
 }
