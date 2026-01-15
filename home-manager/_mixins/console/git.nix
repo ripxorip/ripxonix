@@ -22,7 +22,7 @@
         init = {
           defaultBranch = "master";
         };
-        aliases = {
+        alias = {
           adog = "log --all --decorate --oneline --graph";
           co = "checkout";
         };
