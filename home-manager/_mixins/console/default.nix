@@ -19,14 +19,13 @@
       eza
       fd
       bat
-      delta
       btop
       tmux
       age
       bitwarden-cli
       key_extractor
       tokei
-      du-dust
+      dust
       radare2
       wireguard-tools
       jq

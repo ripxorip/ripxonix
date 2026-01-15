@@ -9,7 +9,7 @@ let
 in
 {
   environment.systemPackages = [
-    agenix.packages."${pkgs.system}".default
+    agenix.packages."${pkgs.stdenv.hostPlatform.system}".default
   ];
 
   # Secrets will be enabled again once the iso has been sorted out
