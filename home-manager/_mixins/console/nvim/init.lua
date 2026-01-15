@@ -263,7 +263,7 @@ capabilities.textDocument.codeAction = {
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 -- LSPs
-nvim_lsp.ccls.setup{
+vim.lsp.config('ccls', {
     init_options = {
         cache = {
             directory = "/home/ripxorip/.cache/ccls"
@@ -271,12 +271,12 @@ nvim_lsp.ccls.setup{
     };
     root_dir = nvim_lsp.util.root_pattern('compile_commands.json');
     capabilities = capabilities;
-    on_attach = on_attach
-}
-
-require'lspconfig'.ts_ls.setup{on_attach=on_attach}
-require'lspconfig'.pylsp.setup{on_attach=on_attach, cmd={"pylsp"}}
-require'lspconfig'.rust_analyzer.setup{on_attach=on_attach}
+    -- on_attach = on_attach
+})
+vim.lsp.enable('ccls')
+-- require'lspconfig'.ts_ls.setup{on_attach=on_attach}
+-- require'lspconfig'.pylsp.setup{on_attach=on_attach, cmd={"pylsp"}}
+-- require'lspconfig'.rust_analyzer.setup{on_attach=on_attach}
 
 
 -- ==========================================
@@ -347,11 +347,11 @@ cmp.setup.cmdline(':', {
 })
 
 -- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+--local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require('lspconfig')['ccls'].setup {
-    capabilities = capabilities
-}
+--require('lspconfig')['ccls'].setup {
+--    capabilities = capabilities
+--}
 
 -- ==========================================
 -- ================ Tmux
