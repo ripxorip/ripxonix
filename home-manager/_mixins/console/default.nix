@@ -32,6 +32,7 @@
       dig
       matrix-sh
       wl-clipboard
+      claude-code
     ];
 
     sessionVariables = {
