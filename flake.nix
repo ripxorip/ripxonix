@@ -109,6 +109,19 @@
             desktop = null;
           };
         };
+        "ripxorip@vps" = lib.homeManagerConfiguration {
+          modules = [
+            ./home-manager
+          ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs stateVersion darkmode;
+            hostname = "vps";
+            platform = "x86_64-linux";
+            username = "ripxorip";
+            desktop = null;
+          };
+        };
       };
 
       # The NixOS configurations
