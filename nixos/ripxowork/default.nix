@@ -99,6 +99,8 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
+  hardware.nvidia-container-toolkit.enable = true;
+
   # In order for VSCode remote to work
   programs.nix-ld.enable = true;
   programs.talon.enable = true;
@@ -144,6 +146,10 @@
     prusa-slicer
     wireshark
     reaper
+    surge
+    dexed
+    sfizz
+    cardinal
     teams-for-linux
     yabridge
     yabridgectl
