@@ -129,6 +129,11 @@
         let
           iso_params = {
             services.displayManager.autoLogin.user = lib.mkForce "ripxorip";
+            # installation-device.nix wants root over ssh; _mixins/services/openssh.nix
+            # doesn't. Both are mkDefault, so the tie has to be broken here. Root on
+            # the installer has an empty password, and PasswordAuthentication is off
+            # anyway -- log in as ripxorip, whose key is in the users mixin.
+            services.openssh.settings.PermitRootLogin = lib.mkForce "no";
             isoImage.squashfsCompression = "gzip -Xcompression-level 1";
           };
         in
