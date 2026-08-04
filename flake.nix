@@ -193,6 +193,35 @@
               desktop = "plasma";
             };
           };
+          # The amp. Bench mode; see nixos/ripxoamp and, for what it is for,
+          # ultimate_amp_fw/docs/architecture.md.
+          ripxoamp = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.users.ripxorip = {
+                  imports = [
+                    ./home-manager
+                  ];
+                };
+                home-manager.extraSpecialArgs = {
+                  inherit inputs outputs stateVersion darkmode;
+                  desktop = "plasma";
+                  hostname = "ripxoamp";
+                  username = "ripxorip";
+                  platform = "x86_64-linux";
+                };
+              }
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion;
+              hostname = "ripxoamp";
+              username = "ripxorip";
+              desktop = "plasma";
+            };
+          };
           ripxowfh = lib.nixosSystem {
             modules = [
               ./nixos
