@@ -122,6 +122,23 @@
         "type": "github"
       }
     },
+    "juce": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756734610,
+        "narHash": "sha256-RUrKQFRLX68L3ROCUFaODSaRMH6zPpAKbc4/e5yDcZ4=",
+        "owner": "juce-framework",
+        "repo": "JUCE",
+        "rev": "f72bad64d29715216226685810c5196bd0d79d77",
+        "type": "github"
+      },
+      "original": {
+        "owner": "juce-framework",
+        "ref": "8.0.9",
+        "repo": "JUCE",
+        "type": "github"
+      }
+    },
     "musnix": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -138,6 +155,24 @@
         "owner": "musnix",
         "repo": "musnix",
         "type": "github"
+      }
+    },
+    "nam": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1786315408,
+        "narHash": "sha256-yCZYjxOl2JTJ8H4/HCES9wjPhblkR5cW0+kwDohPrLA=",
+        "ref": "refs/heads/main",
+        "rev": "daae2d0b482a5fe876258caf3fdfe177044b6295",
+        "revCount": 174,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/sdatkinson/NeuralAmpModelerCore"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/sdatkinson/NeuralAmpModelerCore"
       }
     },
     "nix-formatter-pack": {
@@ -328,6 +363,7 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "talon-nix": "talon-nix",
+        "ultimate-amp": "ultimate-amp",
         "waveforms": "waveforms"
       }
     },
@@ -365,6 +401,46 @@
         "owner": "nix-community",
         "repo": "talon-nix",
         "type": "github"
+      }
+    },
+    "tinyusb": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1735105509,
+        "narHash": "sha256-h2/OaZ5wVPUOg7uJ0b+J0Feq8V/NuhW2UWsUWpefgsc=",
+        "owner": "hathach",
+        "repo": "tinyusb",
+        "rev": "86ad6e56c1700e85f1c5678607a762cfe3aa2f47",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hathach",
+        "repo": "tinyusb",
+        "rev": "86ad6e56c1700e85f1c5678607a762cfe3aa2f47",
+        "type": "github"
+      }
+    },
+    "ultimate-amp": {
+      "inputs": {
+        "juce": "juce",
+        "nam": "nam",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "tinyusb": "tinyusb"
+      },
+      "locked": {
+        "lastModified": 1786453323,
+        "narHash": "sha256-m8XbDIEnzatQs93CbLnAyAfW9eMvB6SnstlwudIZP8s=",
+        "ref": "refs/heads/master",
+        "rev": "d6e86e0d920bd77db843b4322b7a41cd93334417",
+        "revCount": 34,
+        "type": "git",
+        "url": "ssh://git@github.com/ripxorip/ultimate_amp_fw.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/ripxorip/ultimate_amp_fw.git"
       }
     },
     "waveforms": {

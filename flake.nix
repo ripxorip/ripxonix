@@ -33,6 +33,19 @@
 
     musnix  = { url = "github:musnix/musnix"; };
 
+    # The amp's own software: the engine, the RP2040 udev rules and the
+    # firmware tools. This repo owns the box; that one owns what runs on it.
+    #
+    # git+ssh because the repo is private -- github: would need a token. To
+    # test a working tree without pushing:
+    #
+    #   nixos-rebuild build --flake .#ripxoamp \
+    #     --override-input ultimate-amp path:$HOME/dev/ultimate_amp_fw
+    ultimate-amp = {
+      url = "git+ssh://git@github.com/ripxorip/ultimate_amp_fw.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
   outputs =
     { self
@@ -205,6 +218,11 @@
               ./nixos
               agenix.nixosModules.age
               home-manager.nixosModules.home-manager
+              # The RP2040's udev rules and the firmware tools, and the engine
+              # as a session service. Both come from ultimate_amp_fw so that
+              # the software and the rules that make it reachable cannot drift.
+              inputs.ultimate-amp.nixosModules.default
+              inputs.ultimate-amp.nixosModules.engine
               {
                 home-manager.users.ripxorip = {
                   imports = [
